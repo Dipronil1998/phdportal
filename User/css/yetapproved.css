@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    cursor: pointer;
+    overflow-x: hidden;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* nav {
+    overflow: hidden;
+    padding: 15px 50px;
+    border-bottom: 5px solid #011853;
+    background-color: white;
+}
+
+nav h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.navigation {
+    float: right;
+    margin-top: -35px;
+}
+
+.nav {
+    float: right;
+    margin-top: 10px;
+}
+
+.nav a {
+    font-size: 18px;
+    color: #004C99;
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    color: darkblue;
+}
+
+nav .icon{
+    display: none;
+}
+
+
+.navigation a {
+    font-size: 18px;
+    color: rgb(4, 151, 41);
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    text-decoration: none;
+    color: rgb(4, 94, 59);
+} */
+
+.row {
+    font-size: 20px;
+    color: #004C99;
+    font-family: Cambria;
+    font-weight: bolder;
+    padding: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 5%;
+}
+
+.container {
+    background-color: white;
+    /* padding: 20px; */
+    padding: 1.4%;
+    border-radius: 0.7%;
+    border: 2px solid grey;
+}
+
+.container p {
+    font-weight: bold;
+    color: rgb(99, 2, 190);
+    font-family: Cambria;
+    text-align: center;
+    margin:15%;
+    font-size: 20px;
+}
+
+.container form{
+    margin-left: 45%;
+    margin-top: -12%;
+}
+
+
+@media screen and (max-width: 600px) {
+    nav a.icon{
+        font-size: 30px;
+        display: block;
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        color: rgb(4, 151, 41);
+    }
+
+    .navigation a{
+        display: none;
+    }
+
+    .container p {
+        font-weight: bold;
+        color: rgb(99, 2, 190);
+        font-family: Cambria;
+        text-align: center;
+        margin:15%;
+        font-size: 15px;
+    }
+
+    
+  }

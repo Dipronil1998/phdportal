@@ -1,0 +1,57 @@
+body{
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background: #33ccff
+}
+.container{
+	width: 300px;
+	padding: 150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background: white;
+	text-align: center;
+	border-radius: 10px;
+}
+.userInput{
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+input{
+	margin: 10px;
+	height: 35px;
+	width: 65px;
+	border-color: blue bold;
+	border-radius: 5px;
+	text-align: center;
+	font-family: arimo;
+	font-size: 30px;
+	background-color: white;
+	color: black;
+}
+h1{
+	text-align: center;
+	font-family: arimo;
+	color: black bold;
+	text-decoration: underline;
+}
+button{
+	width: 150px;
+	height: 40px;
+	margin: 25px auto 0px auto;
+	font-family: arimo;
+	font-size: 20px;
+	border-color: blue bold;
+	border-radius: 5px;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+.otp{
+	background-color: blue;
+	padding: 50px;
+	height: 50px;
+	width: 200px;
+}

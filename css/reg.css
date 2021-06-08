@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #33ccff;
+}
+
+.container {
+    margin-top: 60px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container .title {
+    font-size: 50px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+form {
+    padding: 5%;
+}
+
+.container form .Registration {
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+.Registration .user {
+    margin-bottom: 15px;
+}
+
+.Registration .user input[type='text'] {
+    width: 20%;
+    margin-left: 2px;
+    height: 25px;
+}
+
+.Registration .user input[type='number'] {
+    width: 20%;
+    margin-left: 2px;
+    height: 25px;
+}
+
+.Registration .user input[type='date'] {
+    width: 20%;
+    margin-left: 2px;
+    height: 25px;
+}
+
+.Registration .user input[type='password'] {
+    width: 20%;
+    margin-left: 2px;
+    height: 25px;
+}
+
+.Registration .user select{
+    width: 20%;
+    margin-left: 2px;
+    height: 25px;
+    font-size: 15px;
+}
+
+.Registration .user .details {
+    font-weight: 500px;
+}
+
+.button {
+    display: flex;
+}
+
+button {
+    margin-bottom: 10px;
+    height: 40px;
+    width: 100px;
+    font-size: 15px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.CS {
+    margin-left: 450px;
+}
+
+.CS a {
+    text-decoration: none;
+}
+
+.Registration .user .date {
+    padding-top: 200px;
+}
