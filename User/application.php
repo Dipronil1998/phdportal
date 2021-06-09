@@ -42,7 +42,7 @@ if (!isset($_SESSION['email'])) {
 	        $arr=mysqli_fetch_array($row);
         ?>
 
-        <form>
+        <form action="../server.php" method="post">
             <h3>Personal Details<span class="required"></h3>
             <hr>
             <div class="info">
@@ -53,30 +53,30 @@ if (!isset($_SESSION['email'])) {
                     <option>Ms.</option>
                     <option>Mrs.</option>
                 </select>
-                <input type="text" name="" value="<?php echo $arr[1]; ?>" readonly>
-                <input type="text" name="" value="<?php echo $arr[2]; ?>" readonly>
-                <input type="text" name="" value="<?php echo $arr[3]; ?>" readonly>
+                <input type="text" name="" value="<?php echo $arr['firstname']; ?>" readonly>
+                <input type="text" name="" value="<?php echo $arr['middlename']; ?>" readonly>
+                <input type="text" name="" value="<?php echo $arr['lastname']; ?>" readonly>
 
             </div>
             <div class="info">
                 <label>Email Id</label>
-                <input type="email" name="email" value="<?php echo $arr[4]; ?>" readonly>
+                <input type="email" name="email" value="<?php echo $arr['email']; ?>" readonly>
                 <label class="dur1">Alternative Email Id</label>
-                <input type="email" name="altemail">
+                <input type="email" name="alteremail">
             </div>
             <div class="info">
                 <label>Phone No</label>
-                <input type="text" pattern="[0-9]{10}" maxlength="10" value="<?php echo $arr[5]; ?>" readonly>
+                <input type="text" pattern="[0-9]{10}" maxlength="10" value="<?php echo $arr['phone']; ?>" readonly>
                 <label class="dur1">Alternative Phone No</label>
-                <input type="text" pattern="[0-9]{10}" maxlength="10">
+                <input type="text" pattern="[0-9]{10}" maxlength="10" name="alterphone">
             </div>
             <div class="info">
                 <label>Gender</label>
-                <input type="radio" id="male" name="gender" class="gender" <?php if($arr[6]=="male") echo "checked";?> value="male">
+                <input type="radio" id="male" name="gender" class="gender" <?php if($arr['gender']=="male") echo "checked";?> value="male">
                 <label for="male" style="width: 5%;">Male</label>
-                <input class="gender" type="radio" id="female" name="gender" value="female" <?php if($arr[6]=="female") echo "checked";?>>
+                <input class="gender" type="radio" id="female" name="gender" value="female" <?php if($arr['gender']=="female") echo "checked";?>>
                 <label for="female" style="width: 7%;">Female</label>
-                <input class="gender" type="radio" id="other" name="gender" value="other" <?php if($arr[6]=="other") echo "checked";?>>
+                <input class="gender" type="radio" id="other" name="gender" value="other" <?php if($arr['gender']=="other") echo "checked";?>>
                 <label for="other" style="width: 15%;display:inline;">Prefer Not To Say</label>
             </div>
             <div class="info">
@@ -85,7 +85,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="info">
                 <label>Father's Name</label>
-                <input type="text">
+                <input type="text" name="fathername">
             </div>
             <br>
 
@@ -93,23 +93,23 @@ if (!isset($_SESSION['email'])) {
             <hr>
             <div class="info">
                 <label>Address</label>
-                <input type="text" style="width: 60%;">
+                <input type="text" name="address" style="width: 60%;">
             </div>
             <div class="info">
                 <label>City</span></label>
-                <input type="text">
+                <input type="text" name="city">
             </div>
             <div class="info">
                 <label>Pincode</label>
-                <input type="text" pattern="[0-9]{6}" maxlength="6">
+                <input type="text" pattern="[0-9]{6}" maxlength="6" name="pin">
             </div>
             <div class="info">
                 <label>State</label>
-                <input type="text">
+                <input type="text" name="state">
             </div>
             <div class="info">
                 <label>Country</label>
-                <select style="width:20%; font-size:16px;">
+                <select name="country" style="width:20%; font-size:16px;">
                     <option></option>
                     <option>India</option>
                 </select>
@@ -122,21 +122,21 @@ if (!isset($_SESSION['email'])) {
             <h4>10th Qualification</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="">
+                <input type="text" name="insti10">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="">
+                <input type="date" name="start10">
                 <label class="dur">End Date</label>
-                <input type="date" name="">
+                <input type="date" name="end10">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="">
+                <input type="text" name="board10">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="">
+                <input type="number" name="per10">
             </div>
 
 
@@ -144,63 +144,63 @@ if (!isset($_SESSION['email'])) {
             <h4>12th Qualification</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="">
+                <input type="text" name="insti12">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="">
+                <input type="date" name="start12">
                 <label class="dur">End Date</label>
-                <input type="date" name="">
+                <input type="date" name="end12">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="">
+                <input type="text" name="board12">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="">
+                <input type="number" name="per12">
             </div>
 
             <br>
             <h4>Under Graduation</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="">
+                <input type="text" name="instigra">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="">
+                <input type="date" name="startgra">
                 <label class="dur">End Date</label>
-                <input type="date" name="">
+                <input type="date" name="endgra">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="">
+                <input type="text" name="boardgra">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="">
+                <input type="number" name="pergra">
             </div>
 
             <br>
             <h4>Post Graduation</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="">
+                <input type="text" name="instipo">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="">
+                <input type="date" name="startpo">
                 <label class="dur">End Date</label>
-                <input type="date" name="">
+                <input type="date" name="endpo">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="">
+                <input type="text" name="boardpo">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="">
+                <input type="number" name="perpo">
             </div>
 
             <br>
@@ -210,10 +210,10 @@ if (!isset($_SESSION['email'])) {
             <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name="" multiple></td>
+                    <td><input type="file" name=""></td>
 
                     <td><label>12th Marksheets</label></td>
-                    <td><input type="file" name="" multiple></td>
+                    <td><input type="file" name=""></td>
                 </tr>
                 <tr>
                     <td><label>Under Graduation Marksheet</label></td>
@@ -250,7 +250,7 @@ if (!isset($_SESSION['email'])) {
             <div class="button">
                 <button type="button" class="btn btn-primary"
                     onclick="document.location='application.php'">Reset</button>
-                <button type="button" class="btn btn-success" onclick="document.location=''">Submit</button>
+                <button class="btn btn-success" name="fullregister">Submit</button>
                 <button type="button" class="btn btn-danger" onclick="document.location='portal.php'">Cancel</button>
             </div>
         </form>

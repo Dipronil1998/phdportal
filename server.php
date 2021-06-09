@@ -49,7 +49,7 @@ if(isset($_POST['otp'])){
         $res = $obj->register($_SESSION['firstname'],$_SESSION['middlename'],$_SESSION['lastname'],$_SESSION['email'],$_SESSION['phone'],$_SESSION['gender'],$_SESSION['dob'],$_SESSION['password']);
         if($res==1)
         {
-          echo "<script>alert('Email Verified successfully');window.location='User/yetapproved.php';</script>";
+          echo "<script>alert('Email Verified successfully');window.location='User/application.php';</script>";
         }
         if($res==0)
         {
@@ -86,7 +86,15 @@ if (isset($_POST['signin'])){
     {
         echo "<script>alert('Email And Password does not match');location.href='signin.php'</script>";
     }
+}
 
+if (isset($_POST['fullregister'])){
+    $obj= new Database;
+    $r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo']);
+    if($r==1)
+        echo "success";
+    else
+        echo "fail";
 }
 
 

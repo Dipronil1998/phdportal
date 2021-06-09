@@ -49,6 +49,24 @@
  			return $result;
  		}
 
+		 
+
+		public function fillregister($email,$alteremail,$alterphone,$fathername,$address,$city,$pin,$state,$country,$insti10,$start10,$end10,$board10,$per10,$insti12,$start12,$end12,$board12,$per12,$instigra,$startgra,$endgra,$boardgra,$pergra,$instipo,$startpo,$endpo,$boardpo,$perpo)
+ 		{
+ 			$result=mysqli_query($this->conn,"SELECT id FROM user WHERE email='$email'");
+ 			$row = mysqli_fetch_assoc($result);
+			//return $row['id']; 
+			$userid=$row['id'];
+			$this->qry=mysqli_query($this->conn,"INSERT INTO userfull(user_id,alteremail,alterphone,fathername,address,city,pin,state,country,insti10,start10,end10,board10,per10,insti12,start12,end12,board12,per12,instigra,startgra,endgra,boardgra,pergra,instipo,startpo,endpo,boardpo,perpo) VALUES('$userid','$alteremail','$alterphone','$fathername','$address','$city','$pin','$state','$country','$insti10','$start10','$end10','$board10','$per10','$insti12','$start12','$end12','$board12','$per12','$instigra','$startgra','$endgra','$boardgra','$pergra','$instipo','$startpo','$endpo','$boardpo','$perpo')");
+
+			if($this->qry)
+				return 1;
+			else
+				return 0;
+ 		}
+
+
+
 		public function isApproved($email)
 		{
 			$this->qry=mysqli_query($this->conn,"SELECT is_approved FROM user WHERE email='$email'");
