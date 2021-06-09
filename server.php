@@ -74,12 +74,13 @@ if (isset($_POST['signin'])){
         $_SESSION['email']=$email;
         $approved=$obj->isApproved($email);
         $payment=$obj->isPayment($email);
-        if($approved==0)
-            echo "<script>location.href='User/yetapproved.php'</script>";
-        if($approved==1 and $payment==0)
-            echo "<script>location.href='User/payment.php'</script>";
-        if($approved==1 and $payment==1)
-            echo "<script>location.href='User/application.php'</script>";
+        echo "<script>location.href='User/application.php'</script>";
+        // if($approved==0)
+        //     echo "<script>location.href='User/yetapproved.php'</script>";
+        // if($approved==1 and $payment==0)
+        //     echo "<script>location.href='User/payment.php'</script>";
+        // if($approved==1 and $payment==1)
+        //     echo "<script>location.href='User/application.php'</script>";
     }
     else
     {

@@ -35,6 +35,12 @@ if (!isset($_SESSION['email'])) {
     <div class="row">Application Form</div>
 
     <div class="container">
+        <?php
+	        include("../config.php");
+	        $obj=new database;
+	        $row=$obj->fetchregdata($_SESSION['email']);
+	        $arr=mysqli_fetch_array($row);
+        ?>
 
         <form>
             <h3>Personal Details<span class="required"></h3>
@@ -47,35 +53,35 @@ if (!isset($_SESSION['email'])) {
                     <option>Ms.</option>
                     <option>Mrs.</option>
                 </select>
-                <input type="text" name="" value="First name">
-                <input type="text" name="" value="Middle name">
-                <input type="text" name="" value="Last name">
+                <input type="text" name="" value="<?php echo $arr[1]; ?>" readonly>
+                <input type="text" name="" value="<?php echo $arr[2]; ?>" readonly>
+                <input type="text" name="" value="<?php echo $arr[3]; ?>" readonly>
 
             </div>
             <div class="info">
                 <label>Email Id</label>
-                <input type="email" name="email">
+                <input type="email" name="email" value="<?php echo $arr[4]; ?>" readonly>
                 <label class="dur1">Alternative Email Id</label>
                 <input type="email" name="altemail">
             </div>
             <div class="info">
                 <label>Phone No</label>
-                <input type="text" pattern="[0-9]{10}" maxlength="10">
-                <label class="dur1">Phone No</label>
+                <input type="text" pattern="[0-9]{10}" maxlength="10" value="<?php echo $arr[5]; ?>" readonly>
+                <label class="dur1">Alternative Phone No</label>
                 <input type="text" pattern="[0-9]{10}" maxlength="10">
             </div>
             <div class="info">
                 <label>Gender</label>
-                <input type="radio" id="male" name="gender" class="gender" value="male">
+                <input type="radio" id="male" name="gender" class="gender" <?php if($arr[6]=="male") echo "checked";?> value="male">
                 <label for="male" style="width: 5%;">Male</label>
-                <input class="gender" type="radio" id="female" name="gender" value="female">
+                <input class="gender" type="radio" id="female" name="gender" value="female" <?php if($arr[6]=="female") echo "checked";?>>
                 <label for="female" style="width: 7%;">Female</label>
-                <input class="gender" type="radio" id="other" name="gender" value="other">
+                <input class="gender" type="radio" id="other" name="gender" value="other" <?php if($arr[6]=="other") echo "checked";?>>
                 <label for="other" style="width: 15%;display:inline;">Prefer Not To Say</label>
             </div>
             <div class="info">
                 <label>D.O.B</label>
-                <input type="date">
+                <input type="date" value="<?php echo $arr[7]; ?>" readonly> 
             </div>
             <div class="info">
                 <label>Father's Name</label>

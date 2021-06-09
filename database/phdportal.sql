@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2021 at 05:44 AM
+-- Generation Time: Jun 09, 2021 at 05:35 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -49,8 +49,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_approved`, `is_payment`) VALUES
-(3, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '1111111111', 'male', '2021-06-06', '', '1245', 0, 0, 0),
-(5, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-03', '', '1234', 0, 0, 0);
+(3, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '1111111111', 'male', '2021-06-06', '', '1245', 0, 1, 1),
+(6, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 0, 0),
+(7, 'dipro', '', 'das', 'ddas86129@gmail.com', '9999999999', 'male', '2021-06-02', '', '1234', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -70,7 +71,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

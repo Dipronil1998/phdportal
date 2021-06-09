@@ -43,6 +43,11 @@
 			else
 				return 0;
         }
+		public function fetchregdata($email)
+ 		{
+ 			$result=mysqli_query($this->conn,"SELECT * FROM user WHERE email='$email'");
+ 			return $result;
+ 		}
 
 		public function isApproved($email)
 		{
