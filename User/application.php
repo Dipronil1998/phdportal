@@ -42,7 +42,7 @@ if (!isset($_SESSION['email'])) {
 	        $arr=mysqli_fetch_array($row);
         ?>
 
-        <form action="../server.php" method="post">
+        <form action="../server.php" method="post" enctype="multipart/form-data">
             <h3>Personal Details<span class="required"></h3>
             <hr>
             <div class="info">
@@ -53,7 +53,7 @@ if (!isset($_SESSION['email'])) {
                     <option>Ms.</option>
                     <option>Mrs.</option>
                 </select>
-                <input type="text" name="" value="<?php echo $arr['firstname']; ?>" readonly>
+                <input type="text" name="firstname" value="<?php echo $arr['firstname']; ?>" readonly>
                 <input type="text" name="" value="<?php echo $arr['middlename']; ?>" readonly>
                 <input type="text" name="" value="<?php echo $arr['lastname']; ?>" readonly>
 
@@ -210,37 +210,37 @@ if (!isset($_SESSION['email'])) {
             <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="mark10" accept="application/pdf"></td>
 
                     <td><label>12th Marksheets</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="mark12" accept="application/pdf"></td>
                 </tr>
                 <tr>
                     <td><label>Under Graduation Marksheet</label></td>
-                    <td><input type="file" name="" multiple></td>
+                    <td><input type="file" name="markgra" accept="application/pdf"></td>
 
                     <td><label>Post Graduation Marksheet</label></td>
-                    <td><input type="file" name="" multiple></td>
+                    <td><input type="file" name="markpo" accept="application/pdf"></td>
                 </tr>
                 <tr>
                     <td><label>Photo Upload</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="photo" accept=".jpg, .jpeg, .png"></td>
 
                     <td><label>Signature Upload</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="sign" accept=".jpg, .jpeg, .png"></td>
                 </tr>
                 <tr>
                     <td><label>Address Proof</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="addressp" accept="application/pdf"></td>
 
                     <td><label>Proforma Upload</label></td>
-                    <td><input type="file" name=""></td>
+                    <td><input type="file" name="proforma" accept="application/pdf"></td>
                 </tr>
             </table>
 
             <br>
             <div class="info">
-                <input type="checkbox"> &nbsp; I hereby declare that all the information given by me in this application
+                <input type="checkbox" required> &nbsp; I hereby declare that all the information given by me in this application
                 is true and correct to the best of my knowledge and belief. I also note that if any of the above
                 statements are found to be
                 incorrect or false or any information or particulars have been suppressed or omitted there from, I am
@@ -255,27 +255,7 @@ if (!isset($_SESSION['email'])) {
             </div>
         </form>
     </div>
-    <!-- <script>
-    function myFunction() {
-        var x = document.getElementById('myTopnav'); 
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
 
-    }
-    </script> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('.menu-toggle').click(function() {
-            $('.menu-toggle').toggleClass('active')
-            $('.navigation').toggleClass('active')
-        })
-    })
-    </script>
 </body>
 
 </html>

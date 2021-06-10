@@ -53,7 +53,7 @@ if(isset($_POST['otp'])){
         }
         if($res==0)
         {
-          echo "<script>alert('Try Again');window.location='server.php';</script>";
+          echo "<script>alert('Try Again');window.location='otp.php';</script>";
         }    
         
     }
@@ -74,9 +74,13 @@ if (isset($_POST['signin'])){
         $_SESSION['email']=$email;
         $approved=$obj->isApproved($email);
         $payment=$obj->isPayment($email);
-        echo "<script>location.href='User/application.php'</script>";
-        // if($approved==0)
-        //     echo "<script>location.href='User/yetapproved.php'</script>";
+        $profile=$obj->isProfile($email);
+        if($profile==0)
+            echo "<script>location.href='User/application.php'</script>";
+        if($approved==0)
+            echo "<script>location.href='User/yetapproved.php'</script>";
+        if($payment==0)
+            echo "<script>location.href='User/payment.php'</script>";
         // if($approved==1 and $payment==0)
         //     echo "<script>location.href='User/payment.php'</script>";
         // if($approved==1 and $payment==1)
@@ -90,11 +94,83 @@ if (isset($_POST['signin'])){
 
 if (isset($_POST['fullregister'])){
     $obj= new Database;
-    $r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo']);
+    $mark10=$obj->checkpdf($_FILES['mark10']);
+    $mark12=$obj->checkpdf($_FILES['mark12']);
+    $markgra=$obj->checkpdf($_FILES['markgra']);
+    $markpo=$obj->checkpdf($_FILES['markpo']);
+    $photo=$obj->checkimage($_FILES['photo']);
+    $sign=$obj->checkimage($_FILES['sign']);
+    $addressp=$obj->checkpdf($_FILES['addressp']);
+    $proforma=$obj->checkpdf($_FILES['proforma']);
+    if($mark10==0 or $mark12==0 or $markgra==0 or $markpo==0 or $addressp==0 or $proforma==0)
+    {
+        echo "<script>alert('pdf file select');location.href='User/application.php'</script>";
+        exit();
+    }
+
+    if($photo==0 or $sign==0)
+    {
+        echo "<script>alert('please select a image');location.href='User/application.php'</script>";
+        exit();
+    }
+
+    if (!file_exists("uploaddocuments")) 
+        mkdir("uploaddocuments");
+
+    if (!file_exists("uploaddocuments/marksheet10")) 
+        mkdir("uploaddocuments/marksheet10");
+    $mark10=$_SESSION['email'].'_'.'marksheet10'.strstr($_FILES['mark10']['name'],'.');
+    $mark10_des="uploaddocuments/marksheet10/".$mark10;
+    move_uploaded_file($_FILES["mark10"]["tmp_name"],$mark10_des);
+
+    if (!file_exists("uploaddocuments/marksheet12")) 
+        mkdir("uploaddocuments/marksheet12");
+    $mark12=$_SESSION['email'].'_'.'marksheet12'.strstr($_FILES['mark12']['name'],'.');
+    $mark12_des="uploaddocuments/marksheet12/".$mark12;
+    move_uploaded_file($_FILES["mark12"]["tmp_name"],$mark12_des);
+
+    if (!file_exists("uploaddocuments/marksheetgraduation")) 
+        mkdir("uploaddocuments/marksheetgraduation");
+    $markgra=$_SESSION['email'].'_'.'marksheetgraduation'.strstr($_FILES['markgra']['name'],'.');
+    $markgra_des="uploaddocuments/marksheetgraduation/".$markgra;
+    move_uploaded_file($_FILES["markgra"]["tmp_name"],$markgra_des);
+
+    if (!file_exists("uploaddocuments/marksheetpostgraduation")) 
+        mkdir("uploaddocuments/marksheetpostgraduation");
+    $markpo=$_SESSION['email'].'_'.'marksheetpostgraduation'.strstr($_FILES['markpo']['name'],'.');
+    $markpo_des="uploaddocuments/marksheetpostgraduation/".$markpo;
+    move_uploaded_file($_FILES["markpo"]["tmp_name"],$markpo_des);
+
+    if (!file_exists("uploaddocuments/photo")) 
+        mkdir("uploaddocuments/photo");
+    $photo=$_SESSION['email'].'_'.'photo'.strstr($_FILES['photo']['name'],'.');
+    $photo_des="uploaddocuments/photo/".$photo;
+    move_uploaded_file($_FILES["photo"]["tmp_name"],$photo_des);
+
+    if (!file_exists("uploaddocuments/sign")) 
+        mkdir("uploaddocuments/sign");
+    $sign=$_SESSION['email'].'_'.'sign'.strstr($_FILES['sign']['name'],'.');
+    $sign_des="uploaddocuments/sign/".$sign;
+    move_uploaded_file($_FILES["sign"]["tmp_name"],$sign_des);
+
+    if (!file_exists("uploaddocuments/addressproff")) 
+        mkdir("uploaddocuments/addressproff");
+    $addressp=$_SESSION['email'].'_'.'addressproof'.strstr($_FILES['addressp']['name'],'.');
+    $addressp_des="uploaddocuments/addressproff/".$addressp;
+    move_uploaded_file($_FILES["addressp"]["tmp_name"],$addressp_des);
+
+    if (!file_exists("uploaddocuments/proforma")) 
+        mkdir("uploaddocuments/proforma");
+    $proforma=$_SESSION['email'].'_'.'proforma'.strstr($_FILES['proforma']['name'],'.');
+    $proforma_des="uploaddocuments/proforma/".$proforma;
+    move_uploaded_file($_FILES["proforma"]["tmp_name"],$proforma_des);
+    
+
+    $r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
     if($r==1)
-        echo "success";
+        echo "<script>location.href='User/yetapproved.php'</script>";
     else
-        echo "fail";
+        echo "<script>location.href='User/application.php'</script>";   
 }
 
 

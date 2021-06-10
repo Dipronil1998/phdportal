@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 05:35 AM
+-- Generation Time: Jun 10, 2021 at 04:37 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -40,6 +40,7 @@ CREATE TABLE `user` (
   `course` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `otp` int(11) NOT NULL,
+  `is_profile` tinyint(4) NOT NULL DEFAULT '0',
   `is_approved` tinyint(4) NOT NULL DEFAULT '0',
   `is_payment` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48,10 +49,64 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_approved`, `is_payment`) VALUES
-(3, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '1111111111', 'male', '2021-06-06', '', '1245', 0, 1, 1),
-(6, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 0, 0),
-(7, 'dipro', '', 'das', 'ddas86129@gmail.com', '9999999999', 'male', '2021-06-02', '', '1234', 0, 0, 0);
+INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_profile`, `is_approved`, `is_payment`) VALUES
+(3, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '1111111111', 'male', '2021-06-06', '', '1245', 0, 1, 0, 0),
+(7, 'dipro', '', 'das', 'ddas86129@gmail.com', '9999999999', 'female', '2021-06-02', '', '1234', 0, 0, 0, 0),
+(9, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-02', '', '1234', 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userfull`
+--
+
+CREATE TABLE `userfull` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `alteremail` varchar(255) NOT NULL,
+  `alterphone` varchar(255) NOT NULL,
+  `fathername` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `pin` varchar(6) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `insti10` varchar(25) NOT NULL,
+  `start10` date NOT NULL,
+  `end10` date NOT NULL,
+  `board10` varchar(25) NOT NULL,
+  `per10` int(11) NOT NULL,
+  `insti12` varchar(25) NOT NULL,
+  `start12` date NOT NULL,
+  `end12` date NOT NULL,
+  `board12` varchar(25) NOT NULL,
+  `per12` int(11) NOT NULL,
+  `instigra` varchar(25) NOT NULL,
+  `startgra` date NOT NULL,
+  `endgra` date NOT NULL,
+  `boardgra` varchar(25) NOT NULL,
+  `pergra` int(11) NOT NULL,
+  `instipo` varchar(25) NOT NULL,
+  `startpo` date NOT NULL,
+  `endpo` text NOT NULL,
+  `boardpo` varchar(25) NOT NULL,
+  `perpo` int(11) NOT NULL,
+  `mark10` varchar(50) NOT NULL,
+  `mark12` varchar(50) NOT NULL,
+  `markgra` varchar(50) NOT NULL,
+  `markpo` varchar(50) NOT NULL,
+  `photo` varchar(50) NOT NULL,
+  `sign` varchar(50) NOT NULL,
+  `addressp` varchar(50) NOT NULL,
+  `proforma` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userfull`
+--
+
+INSERT INTO `userfull` (`id`, `user_id`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
+(15, 3, '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'subhronildas.net@gmail.com_marksheet10.pdf', 'subhronildas.net@gmail.com_marksheet12.pdf', 'subhronildas.net@gmail.com_marksheetgraduation.pdf', 'subhronildas.net@gmail.com_marksheetpostgraduation', 'subhronildas.net@gmail.com_photo.jpg', 'subhronildas.net@gmail.com_sign.jpg', 'subhronildas.net@gmail.com_addressproof.pdf', 'subhronildas.net@gmail.com_proforma.pdf');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +116,15 @@ INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `userfull`
+--
+ALTER TABLE `userfull`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -71,7 +134,23 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `userfull`
+--
+ALTER TABLE `userfull`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `userfull`
+--
+ALTER TABLE `userfull`
+  ADD CONSTRAINT `userfull_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

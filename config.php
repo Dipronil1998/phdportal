@@ -49,23 +49,53 @@
  			return $result;
  		}
 
-		 
 
-		public function fillregister($email,$alteremail,$alterphone,$fathername,$address,$city,$pin,$state,$country,$insti10,$start10,$end10,$board10,$per10,$insti12,$start12,$end12,$board12,$per12,$instigra,$startgra,$endgra,$boardgra,$pergra,$instipo,$startpo,$endpo,$boardpo,$perpo)
+		public function checkpdf($string)
  		{
- 			$result=mysqli_query($this->conn,"SELECT id FROM user WHERE email='$email'");
- 			$row = mysqli_fetch_assoc($result);
-			//return $row['id']; 
-			$userid=$row['id'];
-			$this->qry=mysqli_query($this->conn,"INSERT INTO userfull(user_id,alteremail,alterphone,fathername,address,city,pin,state,country,insti10,start10,end10,board10,per10,insti12,start12,end12,board12,per12,instigra,startgra,endgra,boardgra,pergra,instipo,startpo,endpo,boardpo,perpo) VALUES('$userid','$alteremail','$alterphone','$fathername','$address','$city','$pin','$state','$country','$insti10','$start10','$end10','$board10','$per10','$insti12','$start12','$end12','$board12','$per12','$instigra','$startgra','$endgra','$boardgra','$pergra','$instipo','$startpo','$endpo','$boardpo','$perpo')");
-
-			if($this->qry)
+ 			$pdf=$string['name'];
+			$file_type=$string['type'];
+			if ($file_type=="application/pdf")
 				return 1;
 			else
 				return 0;
  		}
 
+		 public function checkimage($string)
+ 		{
+ 			$image=$string['name'];
+			$file_type=$string['type'];
+			if ($file_type == 'image/jpg' || $file_type == 'image/jpeg' || $file_type == 'image/png')
+				return 1;
+			else
+				return 0;
+ 		}
+		 
 
+		public function fillregister($email,$alteremail,$alterphone,$fathername,$address,$city,$pin,$state,$country,$insti10,$start10,$end10,$board10,$per10,$insti12,$start12,$end12,$board12,$per12,$instigra,$startgra,$endgra,$boardgra,$pergra,$instipo,$startpo,$endpo,$boardpo,$perpo,$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma)
+ 		{
+ 			$result=mysqli_query($this->conn,"SELECT id FROM user WHERE email='$email'");
+ 			$row = mysqli_fetch_assoc($result); 
+			$userid=$row['id'];
+			$this->qry=mysqli_query($this->conn,"INSERT INTO userfull(user_id,alteremail,alterphone,fathername,address,city,pin,state,country,insti10,start10,end10,board10,per10,insti12,start12,end12,board12,per12,instigra,startgra,endgra,boardgra,pergra,instipo,startpo,endpo,boardpo,perpo,mark10,mark12,markgra,markpo,photo,sign,addressp,proforma) VALUES('$userid','$alteremail','$alterphone','$fathername','$address','$city','$pin','$state','$country','$insti10','$start10','$end10','$board10','$per10','$insti12','$start12','$end12','$board12','$per12','$instigra','$startgra','$endgra','$boardgra','$pergra','$instipo','$startpo','$endpo','$boardpo','$perpo','$mark10','$mark12','$markgra','$markpo','$photo','$sign','$addressp','$proforma')");
+
+			if($this->qry)
+			{
+				$r=mysqli_query($this->conn,"UPDATE user SET is_profile=1 WHERE email='$email'");
+				return 1;
+			}
+			else
+				return 0;
+ 		}
+
+		 public function isProfile($email)
+		 {
+			 $this->qry=mysqli_query($this->conn,"SELECT is_profile FROM user WHERE email='$email'");
+			 $row = mysqli_fetch_assoc($this->qry);
+			 if($row['is_profile']==1)
+				 return 1;
+			 else
+				 return 0;
+		 }
 
 		public function isApproved($email)
 		{
