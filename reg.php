@@ -75,9 +75,9 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="user">
                     <label>Enter Capcha</label>
-                    <input style="background-color:lightgray" type="text" id="capt" readonly>
-                    <input type="text" id="textinput">
-                    <h6>Captcha not visible? <i class="fas fa-redo-alt" onclick="cap()" style="cursor: pointer;"></i> to see Captcha</h6>
+                    <input style="background-color:lightgray" type="text" id="capt" onCopy="return false" onCut="return false" readonly>
+                    <input type="text" id="textinput" onpaste="return false;">
+                    <h6>Captcha not visible? <i class="fas fa-redo-alt"  onclick="cap()" style="cursor: pointer;"></i> to see Captcha</h6>
                 </div>
                 
 

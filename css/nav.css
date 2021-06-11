@@ -1,0 +1,52 @@
+nav {
+    overflow: hidden;
+    padding: 15px 30px;
+    border-bottom: 5px solid #011853;
+    background-color: white;
+}
+
+nav h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.navigation {
+    float: right;
+    margin-top: -35px;
+}
+
+.nav{
+    margin-top: 10px;
+}
+
+.nav a {
+    font-size: 18px;
+    color: #004C99;
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #0080ff;
+    color: white;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    color: darkblue;
+    background-color: #ff8000;
+}
+
+.navigation a {
+    font-size: 18px;
+    color: rgb(2, 68, 19);
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    text-decoration: none;
+    color: darkblue;
+}

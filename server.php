@@ -72,19 +72,17 @@ if (isset($_POST['signin'])){
     if($sign==1)
     {
         $_SESSION['email']=$email;
-        $approved=$obj->isApproved($email);
-        $payment=$obj->isPayment($email);
-        $profile=$obj->isProfile($email);
-        if($profile==0)
+        $_SESSION['approved']=$obj->isApproved($email);
+        $_SESSION['payment']=$obj->isPayment($email);
+        $_SESSION['profile']=$obj->isProfile($email);
+        if($_SESSION['profile']==0)
             echo "<script>location.href='User/application.php'</script>";
-        if($approved==0)
+        if( $_SESSION['approved']==0)
             echo "<script>location.href='User/yetapproved.php'</script>";
-        if($payment==0)
+        if($_SESSION['payment']==0)
             echo "<script>location.href='User/payment.php'</script>";
-        // if($approved==1 and $payment==0)
-        //     echo "<script>location.href='User/payment.php'</script>";
-        // if($approved==1 and $payment==1)
-        //     echo "<script>location.href='User/application.php'</script>";
+        else
+            echo "<script>location.href='User/welcome.php'</script>";
     }
     else
     {
@@ -166,14 +164,23 @@ if (isset($_POST['fullregister'])){
     move_uploaded_file($_FILES["proforma"]["tmp_name"],$proforma_des);
     
 
-    $r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
+    $r=$obj->fillregister($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
     if($r==1)
         echo "<script>location.href='User/yetapproved.php'</script>";
     else
         echo "<script>location.href='User/application.php'</script>";   
 }
 
+if (isset($_POST['updateregister'])){
+    $obj= new Database;
+    //$r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
+    $r=$obj->updatedata($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo']);
+    if($r==1)
+        echo "<script>alert('Your Profile is Update');location.href='User/viewapplication.php'</script>";
+    else
+        echo "<script>alert('Your Profile is not Update');location.href='User/viewapplication.php'</script>";
 
+}
 
 
 function smtp_mailer($to,$subject,$msg){    
@@ -197,7 +204,6 @@ function smtp_mailer($to,$subject,$msg){
 
     $mail->IsHTML(true);
 
-                                    // Set email format to HTML
         $mail->Subject = $subject;
         $mail->Body    = $msg;
     

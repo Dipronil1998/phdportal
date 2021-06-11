@@ -4,10 +4,6 @@ session_start();
 if (!isset($_SESSION['email'])) {
     header('location:../portal.php');
 }
-
-// if($_SESSION['approved']==0 and $_SESSION['payment']==0 and $_SESSION['profile']==0){
-//     header('location:application.php');
-// }
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +38,7 @@ if (!isset($_SESSION['email'])) {
         <?php
 	        include("../config.php");
 	        $obj=new database;
-	        $row=$obj->fetchregdata($_SESSION['email']);
+	        $row=$obj->viewdata($_SESSION['email']);
 	        $arr=mysqli_fetch_array($row);
         ?>
 
@@ -53,9 +49,9 @@ if (!isset($_SESSION['email'])) {
                 <label>Name</label>
                 <select name="title">
                     <option></option>
-                    <option value="Mr.">Mr.</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mrs.">Mrs.</option>
+                    <option <?php if($arr['title']=="Mr.") echo "selected";?>>Mr.</option>
+                    <option <?php if($arr['title']=="Ms.") echo "selected";?>>Ms.</option>
+                    <option <?php if($arr['title']=="Mrs.") echo "selected";?>>Mrs.</option>
                 </select>
                 <input type="text" name="firstname" value="<?php echo $arr['firstname']; ?>" readonly>
                 <input type="text" name="" value="<?php echo $arr['middlename']; ?>" readonly>
@@ -66,56 +62,59 @@ if (!isset($_SESSION['email'])) {
                 <label>Email Id</label>
                 <input type="email" name="email" value="<?php echo $arr['email']; ?>" readonly>
                 <label class="dur1">Alternative Email Id</label>
-                <input type="email" name="alteremail">
+                <input type="email" name="alteremail" value="<?php echo $arr['alteremail']; ?>">
             </div>
             <div class="info">
                 <label>Phone No</label>
                 <input type="text" pattern="[0-9]{10}" maxlength="10" value="<?php echo $arr['phone']; ?>" readonly>
                 <label class="dur1">Alternative Phone No</label>
-                <input type="text" pattern="[0-9]{10}" maxlength="10" name="alterphone">
+                <input type="text" pattern="[0-9]{10}" maxlength="10" name="alterphone" value="<?php echo $arr['alterphone']; ?>">
             </div>
             <div class="info">
                 <label>Gender</label>
-                <input type="radio" id="male" name="gender" class="gender" <?php if($arr['gender']=="male") echo "checked";?> value="male">
+                <input type="radio" id="male" name="gender" class="gender"
+                    <?php if($arr['gender']=="male") echo "checked";?> value="male">
                 <label for="male" style="width: 5%;">Male</label>
-                <input class="gender" type="radio" id="female" name="gender" value="female" <?php if($arr['gender']=="female") echo "checked";?>>
+                <input class="gender" type="radio" id="female" name="gender" value="female"
+                    <?php if($arr['gender']=="female") echo "checked";?>>
                 <label for="female" style="width: 7%;">Female</label>
-                <input class="gender" type="radio" id="other" name="gender" value="other" <?php if($arr['gender']=="other") echo "checked";?>>
+                <input class="gender" type="radio" id="other" name="gender" value="other"
+                    <?php if($arr['gender']=="other") echo "checked";?>>
                 <label for="other" style="width: 15%;display:inline;">Prefer Not To Say</label>
             </div>
             <div class="info">
                 <label>D.O.B</label>
-                <input type="date" value="<?php echo $arr[7]; ?>" readonly> 
+                <input type="date" value="<?php echo $arr['dob']; ?>" readonly>
             </div>
             <div class="info">
                 <label>Father's Name</label>
-                <input type="text" name="fathername">
+                <input type="text" name="fathername" value="<?php echo $arr['fathername']; ?>">
             </div>
             <br>
-
+            
             <h3>Permanent Address<span class="required"></span></h3>
             <hr>
             <div class="info">
                 <label>Address</label>
-                <input type="text" name="address" style="width: 60%;">
+                <input type="text" name="address" style="width: 60%;" value="<?php echo $arr['address']; ?>">
             </div>
             <div class="info">
                 <label>City</span></label>
-                <input type="text" name="city">
+                <input type="text" name="city" value="<?php echo $arr['city']; ?>">
             </div>
             <div class="info">
                 <label>Pincode</label>
-                <input type="text" pattern="[0-9]{6}" maxlength="6" name="pin">
+                <input type="text" pattern="[0-9]{6}" maxlength="6" name="pin" value="<?php echo $arr['pin']; ?>">
             </div>
             <div class="info">
                 <label>State</label>
-                <input type="text" name="state">
+                <input type="text" name="state" value="<?php echo $arr['state']; ?>">
             </div>
             <div class="info">
                 <label>Country</label>
-                <select name="country" style="width:20%; font-size:16px;">
+                <select name="country" style="width:20%; font-size:16px;" >
                     <option></option>
-                    <option>India</option>
+                    <option <?php if($arr['country']=="India") echo "selected";?>>India</option>
                 </select>
             </div>
             <br>
@@ -126,21 +125,21 @@ if (!isset($_SESSION['email'])) {
             <h4>10th Qualification</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="insti10">
+                <input type="text" name="insti10" value="<?php echo $arr['insti10']; ?>">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="start10">
+                <input type="date" name="start10" value="<?php echo $arr['start10']; ?>">
                 <label class="dur">End Date</label>
-                <input type="date" name="end10">
+                <input type="date" name="end10" value="<?php echo $arr['end10']; ?>">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="board10">
+                <input type="text" name="board10" value="<?php echo $arr['board10']; ?>">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="per10">
+                <input type="number" name="per10" value="<?php echo $arr['per10']; ?>">
             </div>
 
 
@@ -148,73 +147,73 @@ if (!isset($_SESSION['email'])) {
             <h4>12th Qualification</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="insti12">
+                <input type="text" name="insti12" value="<?php echo $arr['insti12']; ?>">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="start12">
+                <input type="date" name="start12" value="<?php echo $arr['start12']; ?>">
                 <label class="dur">End Date</label>
-                <input type="date" name="end12">
+                <input type="date" name="end12" value="<?php echo $arr['end12']; ?>">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="board12">
+                <input type="text" name="board12" value="<?php echo $arr['board12']; ?>">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="per12">
+                <input type="number" name="per12" value="<?php echo $arr['per12']; ?>">
             </div>
 
             <br>
             <h4>Under Graduation</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="instigra">
+                <input type="text" name="instigra" value="<?php echo $arr['instigra']; ?>">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="startgra">
+                <input type="date" name="startgra" value="<?php echo $arr['startgra']; ?>">
                 <label class="dur">End Date</label>
-                <input type="date" name="endgra">
+                <input type="date" name="endgra" value="<?php echo $arr['endgra']; ?>">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="boardgra">
+                <input type="text" name="boardgra" value="<?php echo $arr['boardgra']; ?>">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="pergra">
+                <input type="number" name="pergra" value="<?php echo $arr['pergra']; ?>">
             </div>
 
             <br>
             <h4>Post Graduation</h4>
             <div class="info">
                 <label>Institute Name</label>
-                <input type="text" name="instipo">
+                <input type="text" name="instipo" value="<?php echo $arr['instipo']; ?>">
             </div>
             <div class="info">
                 <label>Start Date</label>
-                <input type="date" name="startpo">
+                <input type="date" name="startpo" value="<?php echo $arr['startpo']; ?>">
                 <label class="dur">End Date</label>
-                <input type="date" name="endpo">
+                <input type="date" name="endpo" value="<?php echo $arr['endpo']; ?>">
             </div>
             <div class="info">
                 <label>Board/Council</label>
-                <input type="text" name="boardpo">
+                <input type="text" name="boardpo" value="<?php echo $arr['boardpo']; ?>">
             </div>
             <div class="info">
                 <label>Percentage / CGPA</label>
-                <input type="number" name="perpo">
+                <input type="number" name="perpo" value="<?php echo $arr['perpo']; ?>">
             </div>
 
             <br>
 
             <h3>Upload Documents<span class="required"></h3>
             <hr>
-            <table>
+            <!-- <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name="mark10" accept="application/pdf"></td>
+                    <td><input type="file" name="mark10" accept="application/pdf" value=""><?php echo $arr['mark10']; ?></td>
 
                     <td><label>12th Marksheets</label></td>
                     <td><input type="file" name="mark12" accept="application/pdf"></td>
@@ -240,21 +239,23 @@ if (!isset($_SESSION['email'])) {
                     <td><label>Proforma Upload</label></td>
                     <td><input type="file" name="proforma" accept="application/pdf"></td>
                 </tr>
-            </table>
+            </table> -->
 
             <br>
-            <div class="info">
-                <input type="checkbox" required> &nbsp; I hereby declare that all the information given by me in this application
+            <!-- <div class="info">
+                <input type="checkbox" required> &nbsp; I hereby declare that all the information given by me in this
+                application
                 is true and correct to the best of my knowledge and belief. I also note that if any of the above
                 statements are found to be
                 incorrect or false or any information or particulars have been suppressed or omitted there from, I am
                 liable to be disqualified and my admission may be cancelled.
             </div>
-            <br>
+            <br> -->
             <div class="button">
-                <button type="button" class="btn btn-primary" onclick="document.location='application.php'">Reset</button>
-                <button class="btn btn-success" name="fullregister">Submit</button>
-                <button type="button" class="btn btn-danger" onclick="document.location='../portal.php'">Cancel</button>
+                <!-- <button type="button" class="btn btn-primary"
+                    onclick="document.location='viewapplication.php'">Reset</button> -->
+                <button class="btn btn-success" name="updateregister" onclick="return confirm('sure to edit ?')">Update</button>
+                <button type="button" class="btn btn-danger" onclick="document.location='yetapproved.php'">Cancel</button>
             </div>
         </form>
     </div>

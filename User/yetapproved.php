@@ -1,10 +1,12 @@
 <?php 
 session_start();
 
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['email']) and $_SESSION['approved']==1) {
     header('location:../portal.php');
 }
-
+// if($_SESSION['approved']==1 and $_SESSION['payment']==0 and $_SESSION['profile']==0){
+//     header('location:yetapproved.php');
+// }
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +36,10 @@ if (!isset($_SESSION['email'])) {
 
 <body>
     <?php include 'partial/nav1.php'; ?>
-    <div class="row">Not Yet Approved</div>
+    <div class="row"><button type="button" class="btn btn-primary" onclick="document.location='viewapplication.php'">View Profile</button></div>
     <div class="container">
 
-            <p>Your application is not yet approved. You would be notified through email or login again to 
+            <p>Your application is not yet approved.<br> You would be notified through email or login again to 
                 stay update.
             </p>
     </div>

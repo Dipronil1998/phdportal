@@ -10,21 +10,9 @@ body {
 }
 
 
-
-.row {
-    font-size: 20px;
-    color: #004C99;
-    font-family: Cambria;
-    font-weight: bolder;
-    padding: 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-left: 5%;
-}
-
 .container {
     background-color: white;
-    /* padding: 20px; */
+    margin-top: 4%;
     padding: 1.4%;
     border-radius: 0.7%;
     border: 2px solid grey;
@@ -67,6 +55,9 @@ body {
         margin:15%;
         font-size: 18px;
     }
-
+    .container form{
+        margin-left: 35%;
+        margin-top: -12%;
+    }
     
   }
