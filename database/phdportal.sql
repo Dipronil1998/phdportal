@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 04:37 PM
+-- Generation Time: Jun 11, 2021 at 04:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -50,9 +50,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_profile`, `is_approved`, `is_payment`) VALUES
-(3, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '1111111111', 'male', '2021-06-06', '', '1245', 0, 1, 0, 0),
-(7, 'dipro', '', 'das', 'ddas86129@gmail.com', '9999999999', 'female', '2021-06-02', '', '1234', 0, 0, 0, 0),
-(9, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-02', '', '1234', 0, 0, 0, 0);
+(1, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-04', '', '1234', 0, 0, 0, 0),
+(2, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -63,6 +62,7 @@ INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone
 CREATE TABLE `userfull` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `title` varchar(10) NOT NULL,
   `alteremail` varchar(255) NOT NULL,
   `alterphone` varchar(255) NOT NULL,
   `fathername` varchar(255) NOT NULL,
@@ -105,8 +105,8 @@ CREATE TABLE `userfull` (
 -- Dumping data for table `userfull`
 --
 
-INSERT INTO `userfull` (`id`, `user_id`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
-(15, 3, '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'subhronildas.net@gmail.com_marksheet10.pdf', 'subhronildas.net@gmail.com_marksheet12.pdf', 'subhronildas.net@gmail.com_marksheetgraduation.pdf', 'subhronildas.net@gmail.com_marksheetpostgraduation', 'subhronildas.net@gmail.com_photo.jpg', 'subhronildas.net@gmail.com_sign.jpg', 'subhronildas.net@gmail.com_addressproof.pdf', 'subhronildas.net@gmail.com_proforma.pdf');
+INSERT INTO `userfull` (`id`, `user_id`, `title`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
+(1, 2, 'Mr.', '', '', '', '', '', '', '', 'India', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'subhronildas.net@gmail.com_marksheet10.pdf', 'subhronildas.net@gmail.com_marksheet12.pdf', 'subhronildas.net@gmail.com_marksheetgraduation.pdf', 'subhronildas.net@gmail.com_marksheetpostgraduation', 'subhronildas.net@gmail.com_photo.jpg', 'subhronildas.net@gmail.com_sign.jpg', 'subhronildas.net@gmail.com_addressproof.pdf', 'subhronildas.net@gmail.com_proforma.pdf');
 
 --
 -- Indexes for dumped tables
@@ -134,13 +134,13 @@ ALTER TABLE `userfull`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `userfull`
 --
 ALTER TABLE `userfull`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -164,7 +164,7 @@ if (isset($_POST['fullregister'])){
     move_uploaded_file($_FILES["proforma"]["tmp_name"],$proforma_des);
     
 
-    $r=$obj->fillregister($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
+    $r=$obj->fillregister($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10_des,$mark12_des,$markgra_des,$markpo_des,$photo_des,$sign_des,$addressp_des,$proforma_des);
     if($r==1)
         echo "<script>location.href='User/yetapproved.php'</script>";
     else
@@ -174,6 +174,8 @@ if (isset($_POST['fullregister'])){
 if (isset($_POST['updateregister'])){
     $obj= new Database;
     //$r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
+    //$mark10=$obj->checkpdf($_FILES['mark10']);
+
     $r=$obj->updatedata($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo']);
     if($r==1)
         echo "<script>alert('Your Profile is Update');location.href='User/viewapplication.php'</script>";

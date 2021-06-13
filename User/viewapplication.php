@@ -210,15 +210,15 @@ if (!isset($_SESSION['email'])) {
 
             <h3>Upload Documents<span class="required"></h3>
             <hr>
-            <!-- <table>
+            <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
                     <td><input type="file" name="mark10" accept="application/pdf" value=""><?php echo $arr['mark10']; ?></td>
 
-                    <td><label>12th Marksheets</label></td>
-                    <td><input type="file" name="mark12" accept="application/pdf"></td>
+                    <!-- <td><label>12th Marksheets</label></td>
+                    <td><input type="file" name="mark12" accept="application/pdf"></td> -->
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td><label>Under Graduation Marksheet</label></td>
                     <td><input type="file" name="markgra" accept="application/pdf"></td>
 
@@ -238,8 +238,8 @@ if (!isset($_SESSION['email'])) {
 
                     <td><label>Proforma Upload</label></td>
                     <td><input type="file" name="proforma" accept="application/pdf"></td>
-                </tr>
-            </table> -->
+                </tr> -->
+            </table>
 
             <br>
             <!-- <div class="info">
