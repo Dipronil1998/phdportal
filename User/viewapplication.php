@@ -213,8 +213,8 @@ if (!isset($_SESSION['email'])) {
             <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name="mark10" accept="application/pdf" value=""><?php echo $arr['mark10']; ?></td>
-
+                    <!-- <td><input type="file" name="mark10" accept="application/pdf"><a href="../<?php echo $arr['mark12']; ?>">ss</a></td> -->
+                    <td><input type="file" name="mark10" accept="application/pdf"><?php echo $arr['mark12']; ?></td>
                     <!-- <td><label>12th Marksheets</label></td>
                     <td><input type="file" name="mark12" accept="application/pdf"></td> -->
                 </tr>
