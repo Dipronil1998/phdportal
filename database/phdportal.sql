@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 04:43 PM
+-- Generation Time: Jun 15, 2021 at 05:12 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -91,14 +91,14 @@ CREATE TABLE `userfull` (
   `endpo` text NOT NULL,
   `boardpo` varchar(25) NOT NULL,
   `perpo` int(11) NOT NULL,
-  `mark10` varchar(50) NOT NULL,
-  `mark12` varchar(50) NOT NULL,
-  `markgra` varchar(50) NOT NULL,
-  `markpo` varchar(50) NOT NULL,
-  `photo` varchar(50) NOT NULL,
-  `sign` varchar(50) NOT NULL,
-  `addressp` varchar(50) NOT NULL,
-  `proforma` varchar(50) NOT NULL
+  `mark10` varchar(255) NOT NULL,
+  `mark12` varchar(255) NOT NULL,
+  `markgra` varchar(255) NOT NULL,
+  `markpo` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `sign` varchar(255) NOT NULL,
+  `addressp` varchar(255) NOT NULL,
+  `proforma` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `userfull` (
 --
 
 INSERT INTO `userfull` (`id`, `user_id`, `title`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
-(1, 2, 'Mr.', '', '', '', '', '', '', '', 'India', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'subhronildas.net@gmail.com_marksheet10.pdf', 'subhronildas.net@gmail.com_marksheet12.pdf', 'subhronildas.net@gmail.com_marksheetgraduation.pdf', 'subhronildas.net@gmail.com_marksheetpostgraduation', 'subhronildas.net@gmail.com_photo.jpg', 'subhronildas.net@gmail.com_sign.jpg', 'subhronildas.net@gmail.com_addressproof.pdf', 'subhronildas.net@gmail.com_proforma.pdf');
+(2, 2, 'Mr.', '', '', '', '', '', '712121', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '2021-06-06', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, 'rr', '0000-00-00', '', '', 0, '', 'uploaddocuments/marksheet12/subhronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/subhronildas.n', 'uploaddocuments/marksheetpostgraduation/subhronild', 'uploaddocuments/photo/subhronildas.net@gmail.com_p', 'uploaddocuments/sign/subhronildas.net@gmail.com_si', 'uploaddocuments/addressproff/subhronildas.net@gmai', 'uploaddocuments/proforma/subhronildas.net@gmail.co');
 
 --
 -- Indexes for dumped tables
@@ -140,7 +140,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `userfull`
 --
 ALTER TABLE `userfull`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

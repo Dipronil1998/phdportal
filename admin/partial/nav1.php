@@ -2,7 +2,7 @@
     <h1><i class="fa fa-university" aria-hidden="true"></i> PhD PORTAL</h1>
     <div class="menu-toggle"></div>
     <div class="navigation" id="myTopnav">
-        <a href="changepassword.php"><i class="fa fa-edit" aria-hidden="true"></i> Change Password</a>
+        <a href="#"><i class="fa fa-edit" aria-hidden="true"></i> Change Password</a>
         <a href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
     </div>
 </nav>

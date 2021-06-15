@@ -1,9 +1,13 @@
 <?php 
-session_start();
+// session_start();
 
-if (!isset($_SESSION['email'])) {
-    header('location:../portal.php');
-}
+// if (!isset($_SESSION['email'])) {
+//     header('location:../portal.php');
+// }
+
+// if($_SESSION['approved']==0 and $_SESSION['payment']==0 and $_SESSION['profile']==0){
+//     header('location:application.php');
+// }
 ?>
 
 <!DOCTYPE html>
@@ -25,24 +29,22 @@ if (!isset($_SESSION['email'])) {
     <link
         href="https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Acme|Alegreya|Alegreya+Sans|Anton|Archivo|Archivo+Black|Archivo+Narrow|Arimo|Arvo|Asap|Asap+Condensed|Bitter|Bowlby+One+SC|Bree+Serif|Cabin|Cairo|Catamaran|Crete+Round|Crimson+Text|Cuprum|Dancing+Script|Dosis|Droid+Sans|Droid+Serif|EB+Garamond|Exo|Exo+2|Faustina|Fira+Sans|Fjalla+One|Francois+One|Gloria+Hallelujah|Hind|Inconsolata|Indie+Flower|Josefin+Sans|Julee|Karla|Lato|Libre+Baskerville|Libre+Franklin|Lobster|Lora|Mada|Manuale|Maven+Pro|Merriweather|Merriweather+Sans|Montserrat|Montserrat+Subrayada|Mukta+Vaani|Muli|Noto+Sans|Noto+Serif|Nunito|Open+Sans|Open+Sans+Condensed:300|Oswald|Oxygen|PT+Sans|PT+Sans+Caption|PT+Sans+Narrow|PT+Serif|Pacifico|Passion+One|Pathway+Gothic+One|Play|Playfair+Display|Poppins|Questrial|Quicksand|Raleway|Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Ropa+Sans|Rubik|Saira|Saira+Condensed|Saira+Extra+Condensed|Saira+Semi+Condensed|Sedgwick+Ave|Sedgwick+Ave+Display|Shadows+Into+Light|Signika|Slabo+27px|Source+Code+Pro|Source+Sans+Pro|Spectral|Titillium+Web|Ubuntu|Ubuntu+Condensed|Varela+Round|Vollkorn|Work+Sans|Yanone+Kaffeesatz|Zilla+Slab|Zilla+Slab+Highlight"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/newapplicantdetails.css">
     <link rel="stylesheet" href="css/partial/nav1.css">
     <title>Application Form</title>
 </head>
 
 <body>
     <?php include 'partial/nav1.php'; ?>
-    <div class="row">Application Form</div>
 
     <div class="container">
         <?php
-	        include("../config.php");
+	        include("config.php");
 	        $obj=new database;
-	        $row=$obj->viewdata($_GET['email']);
+	        $row=$obj->showdetails($_GET['id']);
 	        $arr=mysqli_fetch_array($row);
         ?>
-
-        <form action="../server.php" method="post" enctype="multipart/form-data">
+        <form action="server.php" method="post" enctype="multipart/form-data">
             <h3>Personal Details<span class="required"></h3>
             <hr>
             <div class="info">
@@ -62,13 +64,13 @@ if (!isset($_SESSION['email'])) {
                 <label>Email Id</label>
                 <input type="email" name="email" value="<?php echo $arr['email']; ?>" readonly>
                 <label class="dur1">Alternative Email Id</label>
-                <input type="email" name="alteremail" value="<?php echo $arr['alteremail']; ?>">
+                <input type="email" name="alteremail">
             </div>
             <div class="info">
                 <label>Phone No</label>
                 <input type="text" pattern="[0-9]{10}" maxlength="10" value="<?php echo $arr['phone']; ?>" readonly>
                 <label class="dur1">Alternative Phone No</label>
-                <input type="text" pattern="[0-9]{10}" maxlength="10" name="alterphone" value="<?php echo $arr['alterphone']; ?>">
+                <input type="text" pattern="[0-9]{10}" maxlength="10" name="alterphone">
             </div>
             <div class="info">
                 <label>Gender</label>
@@ -91,7 +93,7 @@ if (!isset($_SESSION['email'])) {
                 <input type="text" name="fathername" value="<?php echo $arr['fathername']; ?>">
             </div>
             <br>
-            
+
             <h3>Permanent Address<span class="required"></span></h3>
             <hr>
             <div class="info">
@@ -112,7 +114,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="info">
                 <label>Country</label>
-                <select name="country" style="width:20%; font-size:16px;" >
+                <select name="country" style="width:20%; font-size:16px;">
                     <option></option>
                     <option <?php if($arr['country']=="India") echo "selected";?>>India</option>
                 </select>
@@ -213,49 +215,40 @@ if (!isset($_SESSION['email'])) {
             <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name="mark10" accept="application/pdf"><a href="../<?php echo $arr['mark12']; ?>">ss</a></td>
-                    <td><input type="file" name="mark10" accept="application/pdf"><?php echo $arr['mark12']; ?></td>
-                    <!-- <td><label>12th Marksheets</label></td>
-                    <td><input type="file" name="mark12" accept="application/pdf"></td> -->
+                    <td><a href="../<?php echo $arr['mark10']; ?>">Click Here</a></td>
+
+                    <td><label>12th Marksheets</label></td>
+                    <td><a href="../<?php echo $arr['mark12']; ?>">Click Here</a></td>
                 </tr>
-                <!-- <tr>
+                <tr>
                     <td><label>Under Graduation Marksheet</label></td>
-                    <td><input type="file" name="markgra" accept="application/pdf"></td>
+                    <td><a href="../<?php echo $arr['markgra']; ?>">Click Here</a></td>
 
                     <td><label>Post Graduation Marksheet</label></td>
-                    <td><input type="file" name="markpo" accept="application/pdf"></td>
+                    <td><a href="../<?php echo $arr['markpo']; ?>">Click Here</a></td>
                 </tr>
                 <tr>
                     <td><label>Photo Upload</label></td>
-                    <td><input type="file" name="photo" accept=".jpg, .jpeg, .png"></td>
+                    <td><a href="../<?php echo $arr['photo']; ?>">Click Here</a></td>
 
                     <td><label>Signature Upload</label></td>
-                    <td><input type="file" name="sign" accept=".jpg, .jpeg, .png"></td>
+                    <td><a href="../<?php echo $arr['sign']; ?>">Click Here</a></td>
                 </tr>
                 <tr>
                     <td><label>Address Proof</label></td>
-                    <td><input type="file" name="addressp" accept="application/pdf"></td>
+                    <td><a href="../<?php echo $arr['addressp']; ?>">Click Here</a></td>
 
                     <td><label>Proforma Upload</label></td>
-                    <td><input type="file" name="proforma" accept="application/pdf"></td>
-                </tr> -->
+                    <td><a href="../<?php echo $arr['proforma']; ?>">Click Here</a></td>
+                </tr>
             </table>
 
             <br>
-            <!-- <div class="info">
-                <input type="checkbox" required> &nbsp; I hereby declare that all the information given by me in this
-                application
-                is true and correct to the best of my knowledge and belief. I also note that if any of the above
-                statements are found to be
-                incorrect or false or any information or particulars have been suppressed or omitted there from, I am
-                liable to be disqualified and my admission may be cancelled.
-            </div>
-            <br> -->
             <div class="button">
                 <!-- <button type="button" class="btn btn-primary"
-                    onclick="document.location='viewapplication.php'">Reset</button> -->
-                <button class="btn btn-success" name="updateregister" onclick="return confirm('sure to edit ?')">Update</button>
-                <button type="button" class="btn btn-danger" onclick="document.location='yetapproved.php'">Cancel</button>
+                    onclick="document.location='application.php'">Reset</button> -->
+                <button class="btn btn-success" name="approved">Approved</button>
+                <button type="button" class="btn btn-danger" onclick="document.location='../portal.php'">Deney</button>
             </div>
         </form>
     </div>

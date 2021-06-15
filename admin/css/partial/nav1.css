@@ -1,0 +1,103 @@
+nav {
+    overflow: hidden;
+    padding: 15px 50px;
+    border-bottom: 5px solid #011853;
+    background-color: white;
+}
+
+nav h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.navigation {
+    float: right;
+    margin-top: -35px;
+}
+
+.nav {
+    float: right;
+    margin-top: 10px;
+}
+
+.nav a {
+    font-size: 18px;
+    color: #004C99;
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    color: darkblue;
+}
+
+nav .icon{
+    display: none;
+}
+
+
+.navigation a {
+    font-size: 18px;
+    color: rgb(4, 151, 41);
+    font-family: Georgia;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    text-decoration: none;
+    color: rgb(4, 94, 59);
+}
+
+
+.menu-toggle{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .menu-toggle{
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-top: -75px;
+        float: right;
+        cursor: pointer;
+        text-align: center;
+        font-size: 30px;
+        color: #069370;
+    }
+
+    .menu-toggle::before{
+        content: '\f0c9';
+        font-family: fontAwesome;
+        line-height: 40px;
+    }
+
+    .menu-toggle.active::before{
+        content: '\f00d';
+        font-family: fontAwesome;
+        line-height: 40px;
+    }
+
+    .navigation{
+        display: none;
+
+    }
+
+    .navigation.active{
+        display: block;
+
+    }
+
+    .navigation.active a{
+        display: block;
+        margin-top: 20px;
+        padding: 0px;
+    }
+
+    
+  }

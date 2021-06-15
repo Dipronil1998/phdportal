@@ -138,5 +138,11 @@
  			return $this->qry;
  		}
 
+		public function viewapplicant()
+ 		{
+ 			$result=mysqli_query($this->conn,"SELECT * FROM user");
+ 			return $result;
+ 		}
+
 	}
 ?>
