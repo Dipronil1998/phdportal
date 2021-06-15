@@ -64,8 +64,10 @@
                  Techno University provides a virtual interactive platform where the PhD applicants can get full <br>
                   access to repositories ensuring hassle free digital learning 24/7.
                         
+
                 <div class="footer-icons" style="margin-top: 25px;">
                     <span>Follow Us On:</span>
+                    
                     <a href="www.facebook.com"><i class="fa fa-facebook"></i></a>
                     <a href="www.linkedin.com"><i class="fa fa-linkedin"></i></a>
                     <a href="www.instagram.com"><i class="fa fa-instagram"></i></a>
