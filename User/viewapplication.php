@@ -38,7 +38,7 @@ if (!isset($_SESSION['email'])) {
         <?php
 	        include("../config.php");
 	        $obj=new database;
-	        $row=$obj->viewdata($_GET['email']);
+	        $row=$obj->viewdata($_SESSION['email']);
 	        $arr=mysqli_fetch_array($row);
         ?>
 
@@ -213,10 +213,10 @@ if (!isset($_SESSION['email'])) {
             <table>
                 <tr>
                     <td><label>10th Marksheets</label></td>
-                    <td><input type="file" name="mark10" accept="application/pdf"><a href="../<?php echo $arr['mark12']; ?>">ss</a></td>
+                    <!-- <td><input type="file" name="mark10" accept="application/pdf"><a href="../<?php echo $arr['mark12']; ?>">ss</a></td> -->
                     <td><input type="file" name="mark10" accept="application/pdf"><?php echo $arr['mark12']; ?></td>
-                    <!-- <td><label>12th Marksheets</label></td>
-                    <td><input type="file" name="mark12" accept="application/pdf"></td> -->
+                    <td><label>12th Marksheets</label></td>
+                    <td><input type="file" name="mark12" accept="application/pdf"><?php echo $arr['mark12']; ?></td>
                 </tr>
                 <!-- <tr>
                     <td><label>Under Graduation Marksheet</label></td>
@@ -242,15 +242,6 @@ if (!isset($_SESSION['email'])) {
             </table>
 
             <br>
-            <!-- <div class="info">
-                <input type="checkbox" required> &nbsp; I hereby declare that all the information given by me in this
-                application
-                is true and correct to the best of my knowledge and belief. I also note that if any of the above
-                statements are found to be
-                incorrect or false or any information or particulars have been suppressed or omitted there from, I am
-                liable to be disqualified and my admission may be cancelled.
-            </div>
-            <br> -->
             <div class="button">
                 <!-- <button type="button" class="btn btn-primary"
                     onclick="document.location='viewapplication.php'">Reset</button> -->

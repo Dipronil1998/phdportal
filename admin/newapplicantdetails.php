@@ -245,10 +245,8 @@
 
             <br>
             <div class="button">
-                <!-- <button type="button" class="btn btn-primary"
-                    onclick="document.location='application.php'">Reset</button> -->
-                <button class="btn btn-success" name="approved">Approved</button>
-                <button type="button" class="btn btn-danger" onclick="document.location='../portal.php'">Deney</button>
+                <!-- <button class="btn btn-success" name="approved">Approved</button> -->
+                <button type="button" class="btn btn-danger" onclick="document.location='../portal.php'">Cancel</button>
             </div>
         </form>
     </div>
