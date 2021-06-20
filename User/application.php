@@ -60,7 +60,6 @@ if (!isset($_SESSION['email'])) {
                 <input type="text" name="firstname" value="<?php echo $arr['firstname']; ?>" readonly>
                 <input type="text" name="" value="<?php echo $arr['middlename']; ?>" readonly>
                 <input type="text" name="" value="<?php echo $arr['lastname']; ?>" readonly>
-
             </div>
             <div class="info">
                 <label>Email Id</label>

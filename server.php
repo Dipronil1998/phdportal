@@ -82,7 +82,7 @@ if (isset($_POST['signin'])){
         if($_SESSION['payment']==0)
             echo "<script>location.href='User/payment.php'</script>";
         else
-            echo "<script>location.href='User/welcome.php'</script>";
+            echo "<script>location.href='User/synopsis.php'</script>";
     }
     else
     {
