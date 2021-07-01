@@ -61,25 +61,35 @@ session_start();
             </div>
             <button class="btn btn-success" name="fullregister">Submit</button>
         </form>
+        <?php
+	        include("../config.php");
+	        $obj=new database;
+	        $row=$obj->guideselect();
+	        // $arr=mysqli_fetch_array($row);
+        ?>
         <form action="../server.php" id="ifNo" method="post" enctype="multipart/form-data">
             <h1>CHOOSE YOUR OWN GIUDE</h1>
             <div class="info">
                 <label>Guide Name</label>
-                <select name="title">
+                <select name="guide" id="guide">
                     <option></option>
-                    <option value="">Suman Das</option>
-                    <option value="">Subrata Saha</option>
-                    <option value="">Subhendu Saha</option>
+                    <?php
+                        while($arr=mysqli_fetch_array($row)){
+                    ?>
+                        <option value="<?php echo $arr['id']; ?>"><?php echo $arr['name']; ?></option>
+                    <?php } ?>
                 </select>
             </div>
+            <?php  ?>
             <div class="info">
                 <label>Title</label>
-                <input type="email" name="email" value="">
+                <input type="email" name="text" value="<?php echo $arr['name']; ?>">
             </div>
             <div class="info">
                 <label>About Guide</label>
                 <textarea name="" rows="4" cols="50"></textarea>
             </div>
+            <?php  ?>
             <button class="btn btn-success" name="fullregister">Submit</button>
         </form>
     </div>
@@ -103,6 +113,23 @@ session_start();
             document.getElementById('ifYes').style.visibility = 'visible';
         }
     }
+
+    </script>
+    
+    <script>
+    // $(document).ready(function(){
+    //     jQuery('#guide').change(function(){
+    //         var id=jQuery(this).val();
+    //         jQuery.ajax({
+    //             type:'post',
+    //             url:'getguide.php',
+    //             data:id,
+    //             success:function(result){
+    //                 alert(result);
+    //             }
+    //         })
+    //     })
+    // })
     </script>
 </body>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 05:12 PM
+-- Generation Time: Jul 01, 2021 at 05:07 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `phdportal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guide`
+--
+
+CREATE TABLE `guide` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `about` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `guide`
+--
+
+INSERT INTO `guide` (`id`, `name`, `title`, `about`) VALUES
+(1, 'Suman Das', 'Techno India Hooghly', 'CS'),
+(3, 'Subrata Saha', 'Techno India Hooghly', 'C,c++'),
+(4, 'Subhendu Saha', 'TIH', 'all');
 
 -- --------------------------------------------------------
 
@@ -50,8 +72,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_profile`, `is_approved`, `is_payment`) VALUES
-(1, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-04', '', '1234', 0, 0, 0, 0),
-(2, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 0, 0);
+(2, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 0, 0),
+(3, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -106,11 +128,18 @@ CREATE TABLE `userfull` (
 --
 
 INSERT INTO `userfull` (`id`, `user_id`, `title`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
-(2, 2, 'Mr.', '', '', '', '', '', '712121', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '2021-06-06', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, 'rr', '0000-00-00', '', '', 0, '', 'uploaddocuments/marksheet12/subhronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/subhronildas.n', 'uploaddocuments/marksheetpostgraduation/subhronild', 'uploaddocuments/photo/subhronildas.net@gmail.com_p', 'uploaddocuments/sign/subhronildas.net@gmail.com_si', 'uploaddocuments/addressproff/subhronildas.net@gmai', 'uploaddocuments/proforma/subhronildas.net@gmail.co');
+(2, 2, 'Mr.', '', '', '', '', '', '712121', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '2021-06-06', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, 'rr', '0000-00-00', '', '', 0, '', 'uploaddocuments/marksheet12/subhronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/subhronildas.n', 'uploaddocuments/marksheetpostgraduation/subhronild', 'uploaddocuments/photo/subhronildas.net@gmail.com_p', 'uploaddocuments/sign/subhronildas.net@gmail.com_si', 'uploaddocuments/addressproff/subhronildas.net@gmai', 'uploaddocuments/proforma/subhronildas.net@gmail.co'),
+(3, 3, 'Ms.', '', '', '', '', '', '', 'WB', 'India', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'uploaddocuments/marksheet10/dipronildas.net@gmail.com_marksheet10.pdf', 'uploaddocuments/marksheet12/dipronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/dipronildas.net@gmail.com_marksheetgraduation.pdf', 'uploaddocuments/marksheetpostgraduation/dipronildas.net@gmail.com_marksheetpostgraduation.pdf', 'uploaddocuments/photo/dipronildas.net@gmail.com_photo.jpg', 'uploaddocuments/sign/dipronildas.net@gmail.com_sign.jpg', 'uploaddocuments/addressproff/dipronildas.net@gmail.com_addressproof.pdf', 'uploaddocuments/proforma/dipronildas.net@gmail.com_proforma.pdf');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `guide`
+--
+ALTER TABLE `guide`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -131,16 +160,22 @@ ALTER TABLE `userfull`
 --
 
 --
+-- AUTO_INCREMENT for table `guide`
+--
+ALTER TABLE `guide`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `userfull`
 --
 ALTER TABLE `userfull`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

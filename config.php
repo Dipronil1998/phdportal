@@ -144,5 +144,11 @@
  			return $result;
  		}
 
+		public function guideselect()
+ 		{
+ 			$result=mysqli_query($this->conn,"SELECT * FROM guide");
+ 			return $result;
+ 		}
+
 	}
 ?>
