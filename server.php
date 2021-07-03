@@ -185,6 +185,13 @@ if (isset($_POST['updateregister'])){
 }
 
 
+if (isset($_POST['amt']) && isset($_POST['email'])){
+    $obj= new Database;
+    $email=$_POST['email'];
+    $pay=$obj->payment($email);
+}
+
+
 function smtp_mailer($to,$subject,$msg){    
     require("class/class.phpmailer.php");
 

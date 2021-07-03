@@ -112,6 +112,11 @@
 			else
 				return 0;
 		}
+		public function payment($email)
+		{
+			$r=mysqli_query($this->conn,"UPDATE user SET is_payment=1 WHERE email='$email'");
+			return 1;
+		}
 
 		public function isPayment($email)
 		{
@@ -143,6 +148,8 @@
  			$result=mysqli_query($this->conn,"SELECT * FROM user");
  			return $result;
  		}
+
+		 
 
 		public function guideselect()
  		{
