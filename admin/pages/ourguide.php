@@ -1,10 +1,10 @@
 <?php 
     session_start();
-    // if(empty($_SESSION['admin_mail'])){
-    //     header('location: ./sign-in.php');
-    //     exit();
-    // }
-    // include "../../connection/connection.php"
+    if(empty($_SESSION['admin_mail'])){
+        header('location: ./signin.php');
+        exit();
+    }
+    // include("../../connection/connection.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,7 +84,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <a class="btn btn-primary waves-effect" href="addevent.php">
+                <a class="btn btn-primary waves-effect" href="addguide.php">
                     <i class="material-icons">add</i>
                     <span>Add New Guide</span>
                 </a>

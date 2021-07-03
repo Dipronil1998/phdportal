@@ -68,7 +68,7 @@ session_start();
 	        // $arr=mysqli_fetch_array($row);
         ?>
         <form action="../server.php" id="ifNo" method="post" enctype="multipart/form-data">
-            <h1>CHOOSE YOUR OWN GIUDE</h1>
+            <h1>Choose Your Own Guide</h1>
             <div class="info">
                 <label>Guide Name</label>
                 <select name="guide" id="guide">

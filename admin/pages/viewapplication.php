@@ -1,10 +1,10 @@
 <?php 
     session_start();
-    // if(empty($_SESSION['admin_mail'])){
-    //     header('location: ./sign-in.php');
-    //     exit();
-    // }
-    // include "../../connection/connection.php"
+    if(empty($_SESSION['admin_mail'])){
+        header('location: ./signin.php');
+        exit();
+    }
+    // include("../../connection/connection.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -135,12 +135,13 @@
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <li class="list-inline-item">
-                                                    <a href="details.php?id=<?php echo $arr['id'] ?>" class="btn btn-info waves-effect">
-                                                        <i class="material-icons">visibility</i>
-                                                </a>
+                                                        <a href="details.php?id=<?php echo $arr['id'] ?>"
+                                                            class="btn btn-primary waves-effect">
+                                                            <i class="material-icons">visibility</i>
+                                                        </a>
                                                     </li>
                                                     <li class="list-inline-item">
-                                                        <a class="btn btn-primary btn-sm rounded-0 waves-effect edit"
+                                                        <a class="btn btn-success btn-sm rounded-0 waves-effect edit"
                                                             type="button" data-toggle="modal" data-target="#largeModal"
                                                             title="Edit" id="<?php echo $arr['id']; ?>">
                                                             <i class="material-icons">done</i>
@@ -189,7 +190,7 @@
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src=".../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
     <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
     <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
     <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>

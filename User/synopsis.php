@@ -51,7 +51,7 @@ session_start();
                 <label>Upload Synopsis</label>
                 <input type="file" name="mark10" accept="application/pdf" style="display:inline">
             </div>
-            <button class="btn btn-success" name="fullregister">Submit</button>
+            <button class="btn btn-success" name="synopsis">Submit</button>
         </form>
     </div>
 </body>

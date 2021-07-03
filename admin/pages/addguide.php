@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+    if(empty($_SESSION['admin_mail'])){
+        header('location: ./signin.php');
+        exit();
+    }
+    // include("../../connection/connection.php");
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,32 +23,32 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="../../plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+    <link href="../plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
         rel="stylesheet" />
 
     <!-- Bootstrap DatePicker Css -->
-    <link href="../../plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 
     <!-- Wait Me Css -->
-    <link href="../../plugins/waitme/waitMe.css" rel="stylesheet" />
+    <link href="../plugins/waitme/waitMe.css" rel="stylesheet" />
 
     <!-- Bootstrap Select Css -->
-    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="../../css/themes/all-themes.css" rel="stylesheet" />
+    <link href="../css/themes/all-themes.css" rel="stylesheet" />
 
     <!-- Select 2 cdn css -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -79,11 +87,11 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <?php include '../partials/nav.php'; ?>
+    <?php include 'partials/nav.php'; ?>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
-        <?php include '../partials/leftslide.php'; ?>
+        <?php include 'partials/leftslide.php'; ?>
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
     </section>
@@ -138,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a type="button" class="btn btn-danger m-t-15 waves-effect" href="./event.php">BACK</a>
+                            <a type="button" class="btn btn-danger m-t-15 waves-effect" href="./ourguide.php">BACK</a>
                             <button type="submit" name="submit"
                                 class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
                         </form>
@@ -150,38 +158,38 @@
     </section>
 
     <!-- Jquery Core Js -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="../../plugins/node-waves/waves.js"></script>
+    <script src="../plugins/node-waves/waves.js"></script>
 
     <!-- Autosize Plugin Js -->
-    <script src="../../plugins/autosize/autosize.js"></script>
+    <script src="../plugins/autosize/autosize.js"></script>
 
     <!-- Moment Plugin Js -->
-    <script src="../../plugins/momentjs/moment.js"></script>
+    <script src="../plugins/momentjs/moment.js"></script>
 
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    <script src="../../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
     <!-- Bootstrap Datepicker Plugin Js -->
-    <script src="../../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
     <!-- select 2 js cdn -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Custom Js -->
-    <script src="../../js/admin.js"></script>
-    <script src="../../js/pages/forms/basic-form-elements.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/pages/forms/basic-form-elements.js"></script>
 
     <!-- TinyMCE -->
     <!-- <script src="../plugins/tinymce/tinymce.js"></script> -->
