@@ -125,6 +125,7 @@
                                             $obj=new database;
                                             $row=$obj->guideselect();
                                             while($arr=mysqli_fetch_array($row)){
+                                                if($arr['own']==1){
                                         ?>
                                         <tr>
                                                 <td><?php echo $arr['id']; ?></td>
@@ -153,7 +154,7 @@
                                                 </td>
                                         </tr>
                                         <?php 
-                                        }
+                                        } }
                                         ?>
                                     </tbody>
                                 </table>

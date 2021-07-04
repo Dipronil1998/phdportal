@@ -75,14 +75,20 @@ if (isset($_POST['signin'])){
         $_SESSION['approved']=$obj->isApproved($email);
         $_SESSION['payment']=$obj->isPayment($email);
         $_SESSION['profile']=$obj->isProfile($email);
+        $_SESSION['synopsis']=$obj->isSynopsis($email);
+        $_SESSION['guide']=$obj->isGuide($email);
         if($_SESSION['profile']==0)
             echo "<script>location.href='User/application.php'</script>";
         if( $_SESSION['approved']==0)
             echo "<script>location.href='User/yetapproved.php'</script>";
         if($_SESSION['payment']==0)
             echo "<script>location.href='User/payment.php'</script>";
-        else
+        if($_SESSION['synopsis']==0)
             echo "<script>location.href='User/synopsis.php'</script>";
+        if($_SESSION['guide']==0)
+            echo "<script>location.href='User/guide.php'</script>";
+        else
+            echo "<script>location.href='User/approval.php'</script>";
     }
     else
     {
@@ -216,6 +222,15 @@ if (isset($_POST['synopsis'])){
 
 }
 
+if (isset($_POST['newguide'])){
+    $obj= new Database;
+    $newguide=$obj->newguide($_SESSION['email'],$_POST['name'],$_POST['title'],$_POST['about']);
+    if($newguide==1)
+        echo "<script>alert('Thanks for Choosing Guide');location.href='User/approval.php'</script>";
+    else
+        echo "<script>alert('Please Choose Guide');location.href='User/guide.php'</script>";
+
+}
 
 
 

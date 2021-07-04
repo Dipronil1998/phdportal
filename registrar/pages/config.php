@@ -44,7 +44,7 @@
  			 return $result;
  		}
 
-		 public function viewsynopsis()
+		public function viewsynopsis()
  		{
              $result=mysqli_query($this->conn,"SELECT * FROM synopsis");
  			 return $result;

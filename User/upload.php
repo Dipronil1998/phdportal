@@ -4,10 +4,6 @@
 // if (!isset($_SESSION['email'])) {
 //     header('location:../portal.php');
 // }
-
-// if($_SESSION['approved']==0 and $_SESSION['payment']==0 and $_SESSION['profile']==0){
-//     header('location:application.php');
-// }
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +25,9 @@
     <link
         href="https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Acme|Alegreya|Alegreya+Sans|Anton|Archivo|Archivo+Black|Archivo+Narrow|Arimo|Arvo|Asap|Asap+Condensed|Bitter|Bowlby+One+SC|Bree+Serif|Cabin|Cairo|Catamaran|Crete+Round|Crimson+Text|Cuprum|Dancing+Script|Dosis|Droid+Sans|Droid+Serif|EB+Garamond|Exo|Exo+2|Faustina|Fira+Sans|Fjalla+One|Francois+One|Gloria+Hallelujah|Hind|Inconsolata|Indie+Flower|Josefin+Sans|Julee|Karla|Lato|Libre+Baskerville|Libre+Franklin|Lobster|Lora|Mada|Manuale|Maven+Pro|Merriweather|Merriweather+Sans|Montserrat|Montserrat+Subrayada|Mukta+Vaani|Muli|Noto+Sans|Noto+Serif|Nunito|Open+Sans|Open+Sans+Condensed:300|Oswald|Oxygen|PT+Sans|PT+Sans+Caption|PT+Sans+Narrow|PT+Serif|Pacifico|Passion+One|Pathway+Gothic+One|Play|Playfair+Display|Poppins|Questrial|Quicksand|Raleway|Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Ropa+Sans|Rubik|Saira|Saira+Condensed|Saira+Extra+Condensed|Saira+Semi+Condensed|Sedgwick+Ave|Sedgwick+Ave+Display|Shadows+Into+Light|Signika|Slabo+27px|Source+Code+Pro|Source+Sans+Pro|Spectral|Titillium+Web|Ubuntu|Ubuntu+Condensed|Varela+Round|Vollkorn|Work+Sans|Yanone+Kaffeesatz|Zilla+Slab|Zilla+Slab+Highlight"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/newapplicant.css">
+    <link rel="stylesheet" href="css/approval.css">
     <link rel="stylesheet" href="css/partial/nav1.css">
+
     <title>Application Form</title>
 </head>
 
@@ -38,43 +35,62 @@
     <?php include 'partial/nav1.php'; ?>
     <div class="container">
 
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Approved</th>
-                <th>View Profile</th>
-            </tr>
-            <?php
-                include("../config.php");
-                $obj=new database;
-                $row=$obj->viewapplicant();
-                while($arr=mysqli_fetch_array($row)){
-                    if($arr['is_profile']==1){
-            ?>
-            <tr>
-                <td><?php echo $arr['firstname']; ?></td>
-                <td><?php echo $arr['lastname']; ?></td>
-                <td><?php echo $arr['email']; ?></td>
-                <td><?php echo $arr['phone']; ?></td>
-                <td>
-                    <?php if($arr['is_approved'] == 0){ ?>
-                    <a href="status.php?id=<?php echo $arr['id']?>"
-                        onclick="return confirm('Do you want to change the status to approve?');">pending..</a>
-                    <?php } ?>
+        <p>Submit Your Teshis<br>
+            (Document must be in .pdf format)<br>
+        </p>
+        <div class="file-upload">
+            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add
+                Teshis</button>
 
-                   
-
-                </td>
-                <td> <a href="newapplicantdetails.php?id=<?php echo $arr['id'] ?>" style="color:green">
-                        <i class="fa fa-eye" aria-hidden="true"></i></a></td>
-            </tr>
-            <?php } } ?>
-        </table>
+            <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                    <h3>Drag and drop a file or select add Teshis</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+                <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                            class="image-title">Uploaded Image</span></button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
 
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.image-upload-wrap').hide();
+
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function() {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function() {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
+    </script>
 </body>
 
 </html>

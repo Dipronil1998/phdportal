@@ -133,7 +133,7 @@
                                             <td><?php echo $arr['abstract']; ?></td>
                                             <td><a href="../../<?php echo $arr['synopsis']; ?>">Click Here</a></td>
                                             <td><?php echo $arr['guide']; ?></td>
-                                            <td><?php if($arr['is_registrar']==0) echo "Pending"; else echo "Approved"; ?></td>
+                                            <td></td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <!-- <li class="list-inline-item">

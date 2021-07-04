@@ -34,16 +34,25 @@ if (!isset($_SESSION['email'])) {
 <body>
     <?php include 'partial/nav1.php'; ?>
     <div class="container">
-
-        <p>Welcome to …<br>
+        <?php
+	        include("../config.php");
+	        $obj=new database;
+	        $deputy=$obj->is_deputy($_SESSION['email']);
+            $registrar=$obj->is_registrar($_SESSION['email']);
+            $chancellor=$obj->is_chancellor($_SESSION['email']);
+        ?>
+        <!-- <p>Welcome to …<br>
             Explore your potential and go through your research<br>
+        </p> -->
+        <p>Your Application is under process.<br>
+            Login frequently here to check whether your application is approved by<br>
         </p>
-        <input type="checkbox" id="Deputy" name="Deputy" value="Bike">
-        <label for="Deputy"> I have a bike</label><br>
-        <input type="checkbox" id="Registrar" name="Registrar" value="Car">
-        <label for="Registrar"> I have a car</label><br>
-        <input type="checkbox" id="Chancellor" name="Chancellor" value="Boat">
-        <label for="Chancellor"> I have a boat</label><br><br>
+        <input type="checkbox" id="Deputy" name="Deputy" value="Deputy" disabled <?php if($deputy==1) echo "checked" ?>>
+        <label for="Deputy"> Deputy Registrar</label><br>
+        <input type="checkbox" id="Registrar" name="Registrar" value="Registrar" disabled <?php if($registrar==1) echo "checked" ?>>
+        <label for="Registrar"> Registrar</label><br>
+        <input type="checkbox" id="Chancellor" name="Chancellor" value="Chancellor" disabled <?php if($chancellor==1) echo "checked" ?>>
+        <label for="Chancellor"> Vice Chancellor</label><br><br>
 
     </div>
 </body>

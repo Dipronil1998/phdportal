@@ -34,9 +34,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
-                            <i class="material-icons">layers</i>
-                            <span>All User Details</span>
+                        <a href="../pages/viewasynopsis.php">
+                            <i class="material-icons">text_fields</i>
+                            <span>View Synopsis</span>
                         </a>
                     </li>
                     <li>

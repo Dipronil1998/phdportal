@@ -24,7 +24,11 @@
 			else
 				return 0;
         }
-
+		public function viewsynopsis()
+		{
+			$result=mysqli_query($this->conn,"SELECT * FROM synopsis");
+			 return $result;
+		}
 
 		public function guideselect()
  		{
@@ -43,5 +47,15 @@
              $result=mysqli_query($this->conn,"SELECT * FROM user,userfull WHERE user.id='$id' AND user.id=userfull.user_id");
  			 return $result;
  		}
+
+
+		public function addguide($guidename,$title,$about)
+		{
+			$this->qry=mysqli_query($this->conn,"INSERT INTO guide VALUES(NULL,'$guidename','$title','$about',1)");
+			if($this->qry)
+				return 1;
+			else
+				return 0;
+		}
 	}
 ?>

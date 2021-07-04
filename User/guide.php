@@ -42,21 +42,21 @@ if (!isset($_SESSION['email'])) {
             <input type="radio" onclick="javascript:noCheck();" name="guide" id="noCheck">
             <label for="noCheck" style="width: 7%;">No</label>
         </div>
-        <form action="../server.php" id="ifYes" method="post" enctype="multipart/form-data">
+        <form action="../server.php" id="ifYes" method="post">
             <h1>Enter Guide details</h1>
             <div class="info">
                 <label>Guide Name</label>
-                <input type="email" name="email" value="">
+                <input type="text" name="name" value="">
             </div>
             <div class="info">
                 <label>Title</label>
-                <input type="email" name="email" value="">
+                <input type="text" name="title" value="">
             </div>
             <div class="info">
                 <label>About Guide</label>
-                <textarea name="" rows="4" cols="50"></textarea>
+                <textarea name="about" rows="4" cols="50"></textarea>
             </div>
-            <button class="btn btn-success" name="fullregister">Submit</button>
+            <button class="btn btn-success" name="newguide">Submit</button>
         </form>
         <?php
 	        include("../config.php");
@@ -64,7 +64,7 @@ if (!isset($_SESSION['email'])) {
 	        $row=$obj->guideselect();
 	        // $arr=mysqli_fetch_array($row);
         ?>
-        <form action="../server.php" id="ifNo" method="post" enctype="multipart/form-data">
+        <form action="../server.php" id="ifNo" method="post">
             <h1>Choose Your Own Guide</h1>
             <div class="info">
                 <label>Guide Name</label>
@@ -72,9 +72,10 @@ if (!isset($_SESSION['email'])) {
                     <option></option>
                     <?php
                         while($arr=mysqli_fetch_array($row)){
+                            if($arr['own']==1){
                     ?>
                         <option value="<?php echo $arr['id']; ?>"><?php echo $arr['name']; ?></option>
-                    <?php } ?>
+                    <?php } } ?>
                 </select>
             </div>
             <?php  ?>

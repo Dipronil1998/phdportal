@@ -83,12 +83,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <a class="btn btn-primary waves-effect" href="addevent.php">
-                    <i class="material-icons">add</i>
-                    <span>Add New Guide</span>
-                </a>
-            </div>
+            
             <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -123,6 +118,7 @@
                                             $obj=new database;
                                             $row=$obj->guideselect();
                                             while($arr=mysqli_fetch_array($row)){
+                                                if($arr['own']==0){
                                         ?>
                                         <tr>
                                                 <td><?php echo $arr['id']; ?></td>
@@ -132,7 +128,7 @@
                                                 
                                         </tr>
                                         <?php 
-                                        }
+                                        } }
                                         ?>
                                     </tbody>
                                 </table>

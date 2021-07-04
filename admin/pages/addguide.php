@@ -107,13 +107,13 @@
                                 Add Guide
                             </h2>
                         </div>
-                        <form class="body" method="POST" enctype="multipart/form-data">
+                        <form class="body" action="server.php" method="POST" enctype="multipart/form-data">
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Guide Name</label>
-                                            <input type="text" class="form-control" name="Guidename"
+                                            <input type="text" class="form-control" name="guidename"
                                                 placeholder="Enter Guide Name" />
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Guide Title</label>
-                                            <input type="text" class="form-control" name="eventparno" placeholder="Enter No of Participans per event" />
+                                            <input type="text" class="form-control" name="title" placeholder="Enter No of Participans per event" />
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                                             </h2>
                                         </div>
                                         <div class="body">
-                                            <textarea name="rule" id="tinymce">
+                                            <textarea id="tinymce" name="about">
 
                                             </textarea>
                                         </div>
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             <a type="button" class="btn btn-danger m-t-15 waves-effect" href="./ourguide.php">BACK</a>
-                            <button type="submit" name="submit"
+                            <button type="submit" name="addguide"
                                 class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
                         </form>
                     </div>

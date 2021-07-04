@@ -128,6 +128,17 @@
 				return 0;
 		}	
 		
+
+		public function isSynopsis($email)
+		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM user WHERE email='$email'");
+			$row = mysqli_fetch_assoc($this->qry);
+			if($row['is_synopsis']==1)
+				return 1;
+			else
+				return 0;
+		}
+
 		public function viewdata($email)
  		{
  			$result=mysqli_query($this->conn,"SELECT * FROM user,userfull WHERE email='$email' AND user.id=userfull.user_id");
@@ -157,9 +168,9 @@
  			return $result;
  		}
 
-		 public function synopsisin($email,$title,$abstract,$synopsis)
+		public function synopsisin($email,$title,$abstract,$synopsis)
  		{
-			$this->qry=mysqli_query($this->conn,"INSERT INTO synopsis VALUES(NULL,'$email','$title','$abstract','$synopsis')");
+			$this->qry=mysqli_query($this->conn,"INSERT INTO synopsis(email,title,abstract,synopsis) VALUES('$email','$title','$abstract','$synopsis')");
 			if($this->qry){
 				$r=mysqli_query($this->conn,"UPDATE user SET is_synopsis=1 WHERE email='$email'");
 				return 1;
@@ -168,5 +179,55 @@
 				return 0;
  		}
 
+		public function newguide($email,$name,$title,$about)
+ 		{
+			$this->qry=mysqli_query($this->conn,"INSERT INTO guide(name,title,about) VALUES('$name','$title','$about')");
+			if($this->qry){
+				$r=mysqli_query($this->conn,"UPDATE synopsis SET guide='$name' WHERE email='$email'");
+				return 1;
+			}
+			else
+				return 0;
+ 		}
+
+		public function isGuide($email)
+		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
+			$row = mysqli_fetch_assoc($this->qry);
+			if($row['guide']=='')
+				return 0;
+			else
+				return 1;
+		}
+
+		public function is_deputy($email)
+		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
+			$row = mysqli_fetch_assoc($this->qry);
+			if($row['is_deputy']==1)
+				return 1;
+			else
+				return 0;
+		}
+
+		public function is_registrar($email)
+		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
+			$row = mysqli_fetch_assoc($this->qry);
+			if($row['is_registrar']==1)
+				return 1;
+			else
+				return 0;
+		}
+
+		public function is_chancellor($email)
+		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
+			$row = mysqli_fetch_assoc($this->qry);
+			if($row['is_chancellor']==1)
+				return 1;
+			else
+				return 0;
+		}
 	}
 ?>
