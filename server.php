@@ -192,6 +192,33 @@ if (isset($_POST['amt']) && isset($_POST['email'])){
 }
 
 
+
+if (isset($_POST['synopsis'])){
+    $obj= new Database;
+    $syn=$obj->checkpdf($_FILES['synopsis']);
+    if($syn==0)
+    {
+        echo "<script>alert('pdf file select');location.href='User/synopsis.php'</script>";
+        exit();
+    }
+
+    if (!file_exists("uploaddocuments/synopsis")) 
+        mkdir("uploaddocuments/synopsis");
+    $syn=$_SESSION['email'].'_'.'synopsis'.strstr($_FILES['synopsis']['name'],'.');
+    $syn_des="uploaddocuments/synopsis/".$syn;
+    move_uploaded_file($_FILES["synopsis"]["tmp_name"],$syn_des);
+
+    $synopsis=$obj->synopsisin($_SESSION['email'],$_POST['title'],$_POST['abstract'],$syn_des);
+    if($synopsis==1)
+        echo "<script>alert('Your synopsis is Submit');location.href='User/guide.php'</script>";
+    else
+        echo "<script>alert('Your synopsis is not Submit');location.href='User/synopsis.php'</script>";
+
+}
+
+
+
+
 function smtp_mailer($to,$subject,$msg){    
     require("class/class.phpmailer.php");
 

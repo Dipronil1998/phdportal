@@ -1,12 +1,9 @@
 <?php 
 session_start();
 
-// if (!isset($_SESSION['email']) and $_SESSION['approved']==1) {
-//     header('location:../portal.php');
-// }
-// if($_SESSION['approved']==1 and $_SESSION['payment']==0 and $_SESSION['profile']==0){
-//     header('location:yetapproved.php');
-// }
+if (!isset($_SESSION['email'])) {
+    header('location:../portal.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,15 +38,15 @@ session_start();
         <form action="../server.php" method="post" enctype="multipart/form-data">
             <div class="info">
                 <label>Title</label>
-                <input type="email" name="email" value="" >
+                <input type="text" name="title" value="" >
             </div>
             <div class="info">
                 <label>Abstract</label>
-                <textarea name="" rows="4" cols="50"></textarea>
+                <textarea name="abstract" rows="4" cols="50"></textarea>
             </div>
             <div class="info">
                 <label>Upload Synopsis</label>
-                <input type="file" name="mark10" accept="application/pdf" style="display:inline">
+                <input type="file" name="synopsis" accept="application/pdf" style="display:inline">
             </div>
             <button class="btn btn-success" name="synopsis">Submit</button>
         </form>

@@ -157,5 +157,16 @@
  			return $result;
  		}
 
+		 public function synopsisin($email,$title,$abstract,$synopsis)
+ 		{
+			$this->qry=mysqli_query($this->conn,"INSERT INTO synopsis VALUES(NULL,'$email','$title','$abstract','$synopsis')");
+			if($this->qry){
+				$r=mysqli_query($this->conn,"UPDATE user SET is_synopsis=1 WHERE email='$email'");
+				return 1;
+			}
+			else
+				return 0;
+ 		}
+
 	}
 ?>

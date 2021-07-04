@@ -43,5 +43,11 @@
              $result=mysqli_query($this->conn,"SELECT * FROM user,userfull WHERE user.id='$id' AND user.id=userfull.user_id");
  			 return $result;
  		}
+
+		 public function viewsynopsis()
+ 		{
+             $result=mysqli_query($this->conn,"SELECT * FROM synopsis");
+ 			 return $result;
+ 		}
 	}
 ?>

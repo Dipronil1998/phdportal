@@ -98,22 +98,22 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Approved</th>
+                                            <th>Email id</th>
+                                            <th>Title</th>
+                                            <th>Abstract</th>
+                                            <th>synopsis</th>
+                                            <th>Guide Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Approved</th>
+                                            <th>Email id</th>
+                                            <th>title</th>
+                                            <th>Abstract</th>
+                                            <th>synopsis</th>
+                                            <th>Guide Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -121,46 +121,45 @@
                                         <?php 
                                             include("config.php");
                                             $obj=new database;
-                                            $row=$obj->viewapplicant();
+                                            $row=$obj->viewsynopsis();
                                             while($arr=mysqli_fetch_array($row)){
-                                                if($arr['is_profile']==1){
                                         ?>
                                         <tr>
                                             <td><?php echo $arr['id']; ?></td>
-                                            <td><?php echo $arr['firstname']; ?></td>
-                                            <td><?php echo $arr['lastname']; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
-                                            <td><?php echo $arr['phone']; ?></td>
+                                            <td><?php echo $arr['title']; ?></td>
+                                            <td><?php echo $arr['abstract']; ?></td>
+                                            <td><a href="../../<?php echo $arr['synopsis']; ?>">Click Here</a></td>
                                             <td></td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
-                                                    <li class="list-inline-item">
+                                                    <!-- <li class="list-inline-item">
                                                         <a href="details.php?id=<?php echo $arr['id'] ?>"
                                                             class="btn btn-info waves-effect">
                                                             <i class="material-icons">visibility</i>
                                                         </a>
-                                                    </li>
+                                                    </li> -->
                                                     <li class="list-inline-item">
-                                                        <a class="btn btn-primary btn-sm rounded-0 waves-effect edit"
+                                                        <a class="btn btn-success btn-sm rounded-0 waves-effect edit"
                                                             type="button" data-toggle="modal" data-target="#largeModal"
                                                             title="Edit" id="<?php echo $arr['id']; ?>">
                                                             <i class="material-icons">done</i>
                                                         </a>
                                                     </li>
-                                                    <li class="list-inline-item">
+                                                    <!-- <li class="list-inline-item">
                                                         <button
                                                             class="btn btn-danger btn-sm rounded-0 delete waves-effect"
                                                             type="button" data-toggle="modal" data-target="#largeModal"
                                                             title="Delete" id="<?php echo $arr['id']; ?>">
                                                             <i class="material-icons">delete</i>
                                                         </button>
-                                                    </li>
+                                                    </li> -->
 
                                                 </ul>
                                             </td>
                                         </tr>
                                         <?php 
-                                        } }
+                                        } 
                                         ?>
                                     </tbody>
                                 </table>

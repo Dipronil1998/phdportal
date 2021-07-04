@@ -28,9 +28,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/viewapplication.php">
+                        <a href="../pages/viewasynopsis.php">
                             <i class="material-icons">text_fields</i>
-                            <span>New Application</span>
+                            <span>View Synopsis</span>
                         </a>
                     </li>
                     <li>
@@ -53,25 +53,6 @@
                             </li>
                            
                         </ul>
-                    </li>
-                    <li>
-                        <a href="../pages/viewapplication.php">
-                            <i class="material-icons">text_fields</i>
-                            <span>Deputy Registrar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../pages/viewapplication.php">
-                            <i class="material-icons">text_fields</i>
-                            <span>Registrar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../pages/viewapplication.php">
-                            <i class="material-icons">text_fields</i>
-                            <span>Vice Chancellor</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
