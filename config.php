@@ -229,5 +229,17 @@
 			else
 				return 0;
 		}
+
+		public function upload($email,$upload)
+ 		{
+			// $result=mysqli_query($this->conn,"SELECT id FROM user WHERE email='$email'");
+			// $row = mysqli_fetch_assoc($result); 
+		   	// $userid=$row['id'];
+ 			$this->qry=mysqli_query($this->conn,"UPDATE synopsis SET thesis='$upload' WHERE email='$email'");
+ 			if($this->qry)
+				return 1;
+			else
+				return 0;
+ 		}
 	}
 ?>

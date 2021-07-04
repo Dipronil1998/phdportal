@@ -136,28 +136,14 @@
                                             <td><?php if($arr['is_registrar']==0) echo "Pending"; else echo "Approved"; ?></td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
-                                                    <!-- <li class="list-inline-item">
-                                                        <a href="details.php?id=<?php echo $arr['id'] ?>"
-                                                            class="btn btn-info waves-effect">
-                                                            <i class="material-icons">visibility</i>
-                                                        </a>
-                                                    </li> -->
                                                     <li class="list-inline-item">
-                                                        <a class="btn btn-success btn-sm rounded-0 waves-effect edit"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Edit" id="<?php echo $arr['id']; ?>">
+                                                        <form action="server.php?id=<?php echo $arr['id'] ?>">
+                                                        <button name="approve"
+                                                            class="btn btn-success waves-effect">
                                                             <i class="material-icons">done</i>
-                                                        </a>
-                                                    </li>
-                                                    <!-- <li class="list-inline-item">
-                                                        <button
-                                                            class="btn btn-danger btn-sm rounded-0 delete waves-effect"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Delete" id="<?php echo $arr['id']; ?>">
-                                                            <i class="material-icons">delete</i>
                                                         </button>
-                                                    </li> -->
-
+                                                        </form>
+                                                    </li>
                                                 </ul>
                                             </td>
                                         </tr>

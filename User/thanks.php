@@ -1,9 +1,9 @@
 <?php 
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['email'])) {
-//     header('location:../portal.php');
-// }
+if (!isset($_SESSION['email'])) {
+    header('location:../portal.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Acme|Alegreya|Alegreya+Sans|Anton|Archivo|Archivo+Black|Archivo+Narrow|Arimo|Arvo|Asap|Asap+Condensed|Bitter|Bowlby+One+SC|Bree+Serif|Cabin|Cairo|Catamaran|Crete+Round|Crimson+Text|Cuprum|Dancing+Script|Dosis|Droid+Sans|Droid+Serif|EB+Garamond|Exo|Exo+2|Faustina|Fira+Sans|Fjalla+One|Francois+One|Gloria+Hallelujah|Hind|Inconsolata|Indie+Flower|Josefin+Sans|Julee|Karla|Lato|Libre+Baskerville|Libre+Franklin|Lobster|Lora|Mada|Manuale|Maven+Pro|Merriweather|Merriweather+Sans|Montserrat|Montserrat+Subrayada|Mukta+Vaani|Muli|Noto+Sans|Noto+Serif|Nunito|Open+Sans|Open+Sans+Condensed:300|Oswald|Oxygen|PT+Sans|PT+Sans+Caption|PT+Sans+Narrow|PT+Serif|Pacifico|Passion+One|Pathway+Gothic+One|Play|Playfair+Display|Poppins|Questrial|Quicksand|Raleway|Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab|Ropa+Sans|Rubik|Saira|Saira+Condensed|Saira+Extra+Condensed|Saira+Semi+Condensed|Sedgwick+Ave|Sedgwick+Ave+Display|Shadows+Into+Light|Signika|Slabo+27px|Source+Code+Pro|Source+Sans+Pro|Spectral|Titillium+Web|Ubuntu|Ubuntu+Condensed|Varela+Round|Vollkorn|Work+Sans|Yanone+Kaffeesatz|Zilla+Slab|Zilla+Slab+Highlight"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/upload.css">
+    <link rel="stylesheet" href="css/approval.css">
     <link rel="stylesheet" href="css/partial/nav1.css">
 
     <title>Application Form</title>
@@ -34,64 +34,21 @@
 <body>
     <?php include 'partial/nav1.php'; ?>
     <div class="container">
-
-        <p>Submit Your Thesis<br>
-            (Document must be in .pdf format)<br>
+        <?php
+	        include("../config.php");
+	        $obj=new database;
+	        $deputy=$obj->is_deputy($_SESSION['email']);
+            $registrar=$obj->is_registrar($_SESSION['email']);
+            $chancellor=$obj->is_chancellor($_SESSION['email']);
+        ?>
+        <!-- <p>Welcome to …<br>
+            Explore your potential and go through your research<br>
+        </p> -->
+        <p>Your Thesis is Submit Successfully.<br>
+            
         </p>
-        <div class="file-upload">
-            <form action="../server.php" method="POST" enctype="multipart/form-data">
-                
-            <button class="file-upload-btn" name="upload" >Upload File</button>
-                <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' name="thesis" onchange="readURL(this);"
-                        accept="application/pdf" />
-                    <div class="drag-text">
-                        <h3>Drag and drop a file or select add Thesis</h3>
-                    </div>
-                </div>
-                <div class="file-upload-content">
-                    <div class="image-title-wrap" style="margin:10px">
-                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span> </button>
-                    </div>
-                </div>
 
-            </form>
-        </div>
     </div>
-    <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('.image-upload-wrap').hide();
-
-                $('.file-upload-image').attr('src', e.target.result);
-                $('.file-upload-content').show();
-
-                $('.image-title').html(input.files[0].name);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-
-        } else {
-            removeUpload();
-        }
-    }
-
-    function removeUpload() {
-        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-        $('.file-upload-content').hide();
-        $('.image-upload-wrap').show();
-    }
-    $('.image-upload-wrap').bind('dragover', function() {
-        $('.image-upload-wrap').addClass('image-dropping');
-    });
-    $('.image-upload-wrap').bind('dragleave', function() {
-        $('.image-upload-wrap').removeClass('image-dropping');
-    });
-    </script>
 </body>
 
 </html>

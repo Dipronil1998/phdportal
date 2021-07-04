@@ -77,6 +77,10 @@ if (isset($_POST['signin'])){
         $_SESSION['profile']=$obj->isProfile($email);
         $_SESSION['synopsis']=$obj->isSynopsis($email);
         $_SESSION['guide']=$obj->isGuide($email);
+        $deputy=$obj->is_deputy($_SESSION['email']);
+        $registrar=$obj->is_registrar($_SESSION['email']);
+        $chancellor=$obj->is_chancellor($_SESSION['email']);
+
         if($_SESSION['profile']==0)
             echo "<script>location.href='User/application.php'</script>";
         if( $_SESSION['approved']==0)
@@ -87,8 +91,10 @@ if (isset($_POST['signin'])){
             echo "<script>location.href='User/synopsis.php'</script>";
         if($_SESSION['guide']==0)
             echo "<script>location.href='User/guide.php'</script>";
-        else
+        if($deputy==0 or $registrar==0 or $chancellor==0)
             echo "<script>location.href='User/approval.php'</script>";
+        else
+            echo "<script>location.href='User/upload.php'</script>";
     }
     else
     {
@@ -229,6 +235,31 @@ if (isset($_POST['newguide'])){
         echo "<script>alert('Thanks for Choosing Guide');location.href='User/approval.php'</script>";
     else
         echo "<script>alert('Please Choose Guide');location.href='User/guide.php'</script>";
+
+}
+
+
+if (isset($_POST['upload'])){
+    $obj= new Database;
+    $upload=$obj->checkpdf($_FILES['thesis']);
+    if($upload==0)
+    {
+        echo "<script>alert('pdf file select');location.href='User/upload.php'</script>";
+        exit();
+    }
+
+    if (!file_exists("uploaddocuments/thesis")) 
+        mkdir("uploaddocuments/thesis");
+    $upload=$_SESSION['email'].'_'.'thesis'.strstr($_FILES['thesis']['name'],'.');
+    $upload_des="uploaddocuments/thesis/".$upload;
+    move_uploaded_file($_FILES["thesis"]["tmp_name"],$upload_des);
+
+
+    $upload=$obj->upload($_SESSION['email'],$upload_des);
+    if($upload==1)
+        echo "<script>alert('Thesis Submission Successfully');location.href='User/thanks.php'</script>";
+    else
+        echo "<script>alert('Thesis Submission Failed');location.href='User/upload.php'</script>";
 
 }
 
