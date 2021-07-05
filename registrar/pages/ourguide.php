@@ -83,19 +83,13 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <a class="btn btn-primary waves-effect" href="addevent.php">
-                    <i class="material-icons">add</i>
-                    <span>Add New Guide</span>
-                </a>
-            </div>
             <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                All Events
+                                Our Guide
                             </h2>
                         </div>
                         <div class="body">
@@ -107,7 +101,6 @@
                                             <th>Guide Name</th>
                                             <th>Guide Title</th>
                                             <th>About</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -116,7 +109,6 @@
                                             <th>Guide Name</th>
                                             <th>Guide Title</th>
                                             <th>About</th>
-                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -124,36 +116,18 @@
                                             include("config.php");
                                             $obj=new database;
                                             $row=$obj->guideselect();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
+                                                if($arr['own']==1){
                                         ?>
                                         <tr>
-                                                <td><?php echo $arr['id']; ?></td>
+                                                <td><?php echo $i++; ?></td>
                                                 <td><?php echo $arr['name']; ?></td>
                                                 <td><?php echo $arr['title']; ?></td>
                                                 <td><?php echo $arr['about']; ?></td>
-                                                <td>
-                                                <ul class="list-inline m-0" style="float: right;margin: -4px;">
-                                                    <li class="list-inline-item">
-                                                        <a 
-                                                            class="btn btn-primary btn-sm rounded-0 waves-effect edit"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Edit" id="<?php echo $arr['id']; ?>">
-                                                            <i  class="material-icons">edit</i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <button
-                                                            class="btn btn-danger btn-sm rounded-0 delete waves-effect"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Delete" id="<?php echo $arr['id']; ?>">
-                                                            <i  class="material-icons">delete</i>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                </td>
                                         </tr>
                                         <?php 
-                                        }
+                                        } }
                                         ?>
                                     </tbody>
                                 </table>

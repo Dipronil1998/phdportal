@@ -37,8 +37,8 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);"><b>ADMIN LOGIN</b></a>
-            <small>SPARK QUEST 2.0 - ADMIN LOGIN</small>
+            <a href="javascript:void(0);"><b>Registrar Panel</b></a>
+            <small>PHD Portal - Registrar Panel</small>
         </div>
         <div class="card">
             <div class="body">
@@ -66,9 +66,9 @@
                             <button class="btn btn-block bg-pink waves-effect" name="signin" type="submit">SIGN IN</button>
                         </div>
                     </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6 align-right">
-                            <!-- <a href="forgot-password.html">Forgot Password?</a> -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a class="btn btn-block bg-red waves-effect" href="../../portal.php">BACK</a>
                         </div>
                     </div>
                     

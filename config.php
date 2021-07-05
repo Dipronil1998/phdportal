@@ -190,6 +190,17 @@
 				return 0;
  		}
 
+		 public function ourguide($email,$name)
+ 		{
+			$this->qry=mysqli_query($this->conn,"UPDATE synopsis SET guide='$name' WHERE email='$email'");
+			if($this->qry){
+				//$r=mysqli_query($this->conn,"UPDATE synopsis SET guide='$name' WHERE email='$email'");
+				return 1;
+			}
+			else
+				return 0;
+ 		}
+
 		public function isGuide($email)
 		{
 			$this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
@@ -232,14 +243,21 @@
 
 		public function upload($email,$upload)
  		{
-			// $result=mysqli_query($this->conn,"SELECT id FROM user WHERE email='$email'");
-			// $row = mysqli_fetch_assoc($result); 
-		   	// $userid=$row['id'];
  			$this->qry=mysqli_query($this->conn,"UPDATE synopsis SET thesis='$upload' WHERE email='$email'");
  			if($this->qry)
 				return 1;
 			else
 				return 0;
  		}
+
+		 public function is_upload($email)
+		 {
+			 $this->qry=mysqli_query($this->conn,"SELECT * FROM synopsis WHERE email='$email'");
+			 $row = mysqli_fetch_assoc($this->qry);
+			 if($row['thesis']=='')
+				 return 0;
+			 else
+				 return 1;
+		 }
 	}
 ?>

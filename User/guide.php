@@ -68,13 +68,13 @@ if (!isset($_SESSION['email'])) {
             <h1>Choose Your Own Guide</h1>
             <div class="info">
                 <label>Guide Name</label>
-                <select name="guide" id="guide">
+                <select name="name" id="guide">
                     <option></option>
                     <?php
                         while($arr=mysqli_fetch_array($row)){
-                            if($arr['own']==1){
+                            if($arr['own']==1 and $arr['count']<7){
                     ?>
-                        <option value="<?php echo $arr['id']; ?>"><?php echo $arr['name']; ?></option>
+                        <option value="<?php echo $arr['name']; ?>"><?php echo $arr['name']; ?></option>
                     <?php } } ?>
                 </select>
             </div>
@@ -88,7 +88,7 @@ if (!isset($_SESSION['email'])) {
                 <textarea name="" rows="4" cols="50"></textarea>
             </div>
             <?php  ?>
-            <button class="btn btn-success" name="fullregister">Submit</button>
+            <button class="btn btn-success" name="ourguide">Submit</button>
         </form>
     </div>
     <script>

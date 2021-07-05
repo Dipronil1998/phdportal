@@ -282,8 +282,7 @@
 
             <br>
             <div class="button">
-                <!-- <button class="btn btn-success" name="approved">Approved</button> -->
-                <button type="button" class="btn btn-danger" onclick="document.location='viewapplication.php'">Cancel</button>
+                <a class="btn btn-danger" href="javascript:history.back()">Go Back</a>
             </div>
         </form>
     </section>

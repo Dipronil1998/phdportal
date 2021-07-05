@@ -5,6 +5,11 @@
         exit();
     }
     // include("../../connection/connection.php");
+    include("config.php");
+    $obj= new Database;
+    $newapplication=$obj->newapplication();
+    $totalstudent=$obj->totalstudent();
+    $pendingstudent=$obj->pendingstudent();
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +104,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL NEW APPLICATION</div>
-                    <div class="number count-to" data-from="0" data-to="{{$posts->count()}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -111,7 +116,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL STUDENTS</div>
-                    <div class="number count-to" data-from="0" data-to="{{ Auth::user()->favorite_posts()->count() }}"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $totalstudent; ?>"
                         data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -123,7 +128,7 @@
                 </div>
                 <div class="content">
                     <div class="text">PENDING STUDENTS </div>
-                    <div class="number count-to" data-from="0" data-to="{{$total_pending_posts}}" data-speed="1000"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $pendingstudent; ?>" data-speed="1000"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -135,7 +140,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL GUIDE</div>
-                    <div class="number count-to" data-from="0" data-to="{{$all_views}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -150,7 +155,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL SYNPOSIS SUBMIT</div>
-                    <div class="number count-to" data-from="0" data-to="{{$category_count}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -160,7 +165,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL THESIS SUBMIT</div>
-                    <div class="number count-to" data-from="0" data-to="{{$tag_count}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -170,7 +175,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TOTAL GUIDE WHO ARE NOT REGISTER</div>
-                    <div class="number count-to" data-from="0" data-to="{{$author_count}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -180,7 +185,7 @@
                 </div>
                 <div class="content">
                     <div class="text">TODAY AUTHORS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$new_authors_today}}" data-speed="15"
+                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>

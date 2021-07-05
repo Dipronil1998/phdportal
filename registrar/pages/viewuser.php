@@ -83,19 +83,13 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <a class="btn btn-primary waves-effect" href="addguide.php">
-                    <i class="material-icons">add</i>
-                    <span>Add New Guide</span>
-                </a>
-            </div>
             <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                All Events
+                               Student
                             </h2>
                         </div>
                         <div class="body">
@@ -104,58 +98,48 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Guide Name</th>
-                                            <th>Guide Title</th>
-                                            <th>About</th>
-                                            <th>Count</th>
-                                            <th>Action</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>Guide Name</th>
-                                            <th>Guide Title</th>
-                                            <th>About</th>
-                                            <th>Count</th>
-                                            <th>Action</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php 
                                             include("config.php");
                                             $obj=new database;
-                                            $row=$obj->guideselect();
+                                            $row=$obj->viewapplicant();
                                             $i=1;
                                             while($arr=mysqli_fetch_array($row)){
-                                                if($arr['own']==1){
+                                                if($arr['is_approved']==1 ){
                                         ?>
                                         <tr>
-                                                <td><?php echo $i; $i++; ?></td>
-                                                <td><?php echo $arr['name']; ?></td>
-                                                <td><?php echo $arr['title']; ?></td>
-                                                <td><?php echo $arr['about']; ?></td>
-                                                <td><?php echo $arr['count']; ?></td>
-                                                <td>
+                                            <td><?php echo $i; $i++; ?></td>
+                                            <td><?php echo $arr['firstname']; ?></td>
+                                            <td><?php echo $arr['lastname']; ?></td>
+                                            <td><?php echo $arr['email']; ?></td>
+                                            <td><?php echo $arr['phone']; ?></td>
+                                            <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <li class="list-inline-item">
-                                                        <a 
-                                                            class="btn btn-primary btn-sm rounded-0 waves-effect edit"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Edit" id="<?php echo $arr['id']; ?>">
-                                                            <i  class="material-icons">edit</i>
+                                                        <a href="details.php?id=<?php echo $arr['id'] ?>"
+                                                            class="btn btn-primary waves-effect">
+                                                            <i class="material-icons">visibility</i>
                                                         </a>
                                                     </li>
-                                                    <li class="list-inline-item">
-                                                        <button
-                                                            class="btn btn-danger btn-sm rounded-0 delete waves-effect"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Delete" id="<?php echo $arr['id']; ?>">
-                                                            <i  class="material-icons">delete</i>
-                                                        </button>
-                                                    </li>
                                                 </ul>
-                                                </td>
+                                            </td>
                                         </tr>
                                         <?php 
                                         } }

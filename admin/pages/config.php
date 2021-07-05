@@ -65,12 +65,46 @@
  			return $result;
  		}
 
+		 public function delete($id)
+ 		{
+             $result=mysqli_query($this->conn,"DELETE FROM user WHERE id='$id'");
+ 			return $result;
+ 		}
+
 		public function email($id)
  		{
 			$this->qry=mysqli_query($this->conn,"SELECT * FROM user WHERE id='$id'");
 			$row = mysqli_fetch_assoc($this->qry);
  			return $row['email'];
 			
+ 		}
+
+		public function newapplication()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_approved=1");
+			$result=mysqli_num_rows($result);
+ 			return $result;
+ 		}
+
+		public function totalstudent()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_approved=1");
+			$result=mysqli_num_rows($result);
+ 			return $result;
+ 		}
+
+		public function pendingstudent()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_approved=0");
+			$result=mysqli_num_rows($result);
+ 			return $result;
+ 		}
+
+		public function totalguide()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_approved=0");
+			$result=mysqli_num_rows($result);
+ 			return $result;
  		}
 	}
 ?>

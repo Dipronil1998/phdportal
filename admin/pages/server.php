@@ -3,7 +3,6 @@ session_start();
 include("config.php");
 
 
-
 if (isset($_POST['signin'])){
     $obj= new Database;
     $email=$_POST['email'];
@@ -42,11 +41,25 @@ if (isset($_POST['approve'])){
                     
     $result = smtp_mailer($email,'Application Approved',$mailHtml);
     if($approved==1 or $result==1)
-    {
         echo "<script>alert('User Approved');location.href='viewapplication.php'</script>";
-    }
     else
         echo "<script>alert('User not Approved');location.href='viewapplication.php'</script>";
+}
+
+if (isset($_POST['delete'])){
+    $obj= new Database;
+    $email=$obj->email($_GET['id']);
+    $delete=$obj->delete($_GET['id']);
+    $mailHtml="Username: $email \n <br>".
+                "Your Application is deney.\n";
+                    
+    $result = smtp_mailer($email,'Application deny',$mailHtml);
+    if($delete==1 or $result==1)
+    {
+        echo "<script>alert('User Deny');location.href='viewapplication.php'</script>";
+    }
+    else
+        echo "<script>alert('User not Deny');location.href='viewapplication.php'</script>";
 
 }
 

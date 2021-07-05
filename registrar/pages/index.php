@@ -98,8 +98,8 @@
                     <i class="material-icons">playlist_add_check</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL POSTS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$posts->count()}}" data-speed="15"
+                    <div class="text">PENDING APPROVAL</div>
+                    <div class="number count-to" data-from="0" data-to="" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -110,8 +110,8 @@
                     <i class="material-icons">favorite</i>
                 </div>
                 <div class="content">
-                    <div class="text">FAVORITE POSTS</div>
-                    <div class="number count-to" data-from="0" data-to="{{ Auth::user()->favorite_posts()->count() }}"
+                    <div class="text">SYNOPSIS SUBMIT</div>
+                    <div class="number count-to" data-from="0" data-to=""
                         data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -122,8 +122,8 @@
                     <i class="material-icons">library_books</i>
                 </div>
                 <div class="content">
-                    <div class="text">PENDING POSTS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$total_pending_posts}}" data-speed="1000"
+                    <div class="text">THESIS SUBMIT</div>
+                    <div class="number count-to" data-from="0" data-to="" data-speed="1000"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -134,8 +134,8 @@
                     <i class="material-icons">visibility</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL VIEWS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$all_views}}" data-speed="1000"
+                    <div class="text">PENDING THESIS</div>
+                    <div class="number count-to" data-from="0" data-to="" data-speed="1000"
                         data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -143,48 +143,6 @@
     </div>
 
     <div class="row clearfix">
-        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-            <div class="info-box bg-pink hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">apps</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL CATEGORIES</div>
-                    <div class="number count-to" data-from="0" data-to="{{$category_count}}" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-blue hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">labels</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL TAGS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$tag_count}}" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-purple hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">account_circle</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL AUTHORS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$author_count}}" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-deep-purple hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">fiber_new</i>
-                </div>
-                <div class="content">
-                    <div class="text">TODAY AUTHORS</div>
-                    <div class="number count-to" data-from="0" data-to="{{$new_authors_today}}" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </div>
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
             <div class="card">
                 <div class="header">

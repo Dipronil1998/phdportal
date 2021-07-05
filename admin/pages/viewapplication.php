@@ -132,7 +132,8 @@
                                             <td><?php echo $arr['lastname']; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
                                             <td><?php echo $arr['phone']; ?></td>
-                                            <td><?php if($arr['is_approved']==0) echo "Pending"; else echo "Approved"; ?></td>
+                                            <td><?php if($arr['is_approved']==0) echo "Pending"; else echo "Approved"; ?>
+                                            </td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <li class="list-inline-item">
@@ -151,12 +152,14 @@
                                                         </form>
                                                     </li>
                                                     <li class="list-inline-item">
-                                                        <button
-                                                            class="btn btn-danger btn-sm rounded-0 delete waves-effect"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Delete" id="<?php echo $arr['id']; ?>">
-                                                            <i class="material-icons">delete</i>
-                                                        </button>
+                                                        <form action="server.php?id=<?php echo $arr['id'] ?>"
+                                                            method="post">
+                                                            <button name="delete"
+                                                                class="btn btn-danger btn-sm rounded-0 delete waves-effect"
+                                                                onclick="return confirm('Do you want to Deney?');">
+                                                                <i class="material-icons">delete</i>
+                                                            </button>
+                                                        </form>
                                                     </li>
 
                                                 </ul>

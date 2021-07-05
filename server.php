@@ -80,6 +80,7 @@ if (isset($_POST['signin'])){
         $deputy=$obj->is_deputy($_SESSION['email']);
         $registrar=$obj->is_registrar($_SESSION['email']);
         $chancellor=$obj->is_chancellor($_SESSION['email']);
+        $upload=$obj->is_upload($_SESSION['email']);
 
         if($_SESSION['profile']==0)
             echo "<script>location.href='User/application.php'</script>";
@@ -93,8 +94,10 @@ if (isset($_POST['signin'])){
             echo "<script>location.href='User/guide.php'</script>";
         if($deputy==0 or $registrar==0 or $chancellor==0)
             echo "<script>location.href='User/approval.php'</script>";
-        else
+        if($upload==0)
             echo "<script>location.href='User/upload.php'</script>";
+        else
+            echo "<script>location.href='User/thanks.php'</script>";
     }
     else
     {
@@ -185,9 +188,6 @@ if (isset($_POST['fullregister'])){
 
 if (isset($_POST['updateregister'])){
     $obj= new Database;
-    //$r=$obj->fillregister($_SESSION['email'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo'],$mark10,$mark12,$markgra,$markpo,$photo,$sign,$addressp,$proforma);
-    //$mark10=$obj->checkpdf($_FILES['mark10']);
-
     $r=$obj->updatedata($_SESSION['email'],$_POST['title'],$_POST['alteremail'],$_POST['alterphone'],$_POST['fathername'],$_POST['address'],$_POST['city'],$_POST['pin'],$_POST['state'],$_POST['country'],$_POST['insti10'],$_POST['start10'],$_POST['end10'],$_POST['board10'],$_POST['per10'],$_POST['insti12'],$_POST['start12'],$_POST['end12'],$_POST['board12'],$_POST['per12'],$_POST['instigra'],$_POST['startgra'],$_POST['endgra'],$_POST['boardgra'],$_POST['pergra'],$_POST['instipo'],$_POST['startpo'],$_POST['endpo'],$_POST['boardpo'],$_POST['perpo']);
     if($r==1)
         echo "<script>alert('Your Profile is Update');location.href='User/viewapplication.php'</script>";
@@ -232,6 +232,16 @@ if (isset($_POST['newguide'])){
     $obj= new Database;
     $newguide=$obj->newguide($_SESSION['email'],$_POST['name'],$_POST['title'],$_POST['about']);
     if($newguide==1)
+        echo "<script>alert('Thanks for Choosing Guide');location.href='User/approval.php'</script>";
+    else
+        echo "<script>alert('Please Choose Guide');location.href='User/guide.php'</script>";
+
+}
+
+if (isset($_POST['ourguide'])){
+    $obj= new Database;
+    $ourguide=$obj->ourguide($_SESSION['email'],$_POST['name']);
+    if($ourguide==1)
         echo "<script>alert('Thanks for Choosing Guide');location.href='User/approval.php'</script>";
     else
         echo "<script>alert('Please Choose Guide');location.href='User/guide.php'</script>";

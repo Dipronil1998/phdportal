@@ -89,7 +89,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                All New Applicant
+                                View Synopsis & Thesis
                             </h2>
                         </div>
                         <div class="body">
@@ -124,10 +124,12 @@
                                             include("config.php");
                                             $obj=new database;
                                             $row=$obj->viewsynopsis();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
+                                                if($arr['is_registrar']==0){
                                         ?>
                                         <tr>
-                                            <td><?php echo $arr['id']; ?></td>
+                                            <td><?php echo $i;$i++ ?></td>
                                             <td><?php echo $arr['email']; ?></td>
                                             <td><?php echo $arr['title']; ?></td>
                                             <td><?php echo $arr['abstract']; ?></td>
@@ -148,7 +150,7 @@
                                             </td>
                                         </tr>
                                         <?php 
-                                        } 
+                                        } }
                                         ?>
                                     </tbody>
                                 </table>
