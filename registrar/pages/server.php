@@ -19,3 +19,15 @@ if (isset($_POST['signin'])){
         echo "<script>alert('Email And Password does not match');location.href='signin.php'</script>";
     }
 }
+
+
+if (isset($_POST['approve'])){
+    echo($_GET['id']);
+    $obj= new Database;
+    $approved=$obj->approved($_GET['id']);
+    if($approved==1)
+    echo "<script>alert('Synopsis Approved');location.href='viewsynopsis.php'</script>";
+    else
+        echo "<script>alert('Synopsis not Approved');location.href='viewsynopsis.php'</script>";
+
+}

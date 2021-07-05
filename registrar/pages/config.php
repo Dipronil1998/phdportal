@@ -49,5 +49,11 @@
              $result=mysqli_query($this->conn,"SELECT * FROM synopsis");
  			 return $result;
  		}
+
+		public function approved($id)
+ 		{
+             $result=mysqli_query($this->conn,"UPDATE synopsis SET is_registrar=1 WHERE id='$id'");
+ 			 return $result;
+ 		}
 	}
 ?>

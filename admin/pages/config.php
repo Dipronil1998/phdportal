@@ -15,6 +15,7 @@
 	
 	class database extends config
 	{
+
 		public function signin($email,$pass)
         {
 			$this->qry=mysqli_query($this->conn,"SELECT * FROM admin_login WHERE adminemail='$email' AND adminpassword='$pass'");
@@ -57,5 +58,19 @@
 			else
 				return 0;
 		}
+
+		public function approved($id)
+ 		{
+             $result=mysqli_query($this->conn,"UPDATE user SET is_approved=1 WHERE id='$id'");
+ 			return $result;
+ 		}
+
+		public function email($id)
+ 		{
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM user WHERE id='$id'");
+			$row = mysqli_fetch_assoc($this->qry);
+ 			return $row['email'];
+			
+ 		}
 	}
 ?>

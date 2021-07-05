@@ -89,7 +89,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                View Synopsis & Thesis
+                                All New Applicant
                             </h2>
                         </div>
                         <div class="body">
@@ -103,10 +103,8 @@
                                             <th>Abstract</th>
                                             <th>synopsis</th>
                                             <th>Guide Name</th>
-                                            <th>Approved BY Deputy Regisrtar</th> 
-                                            <th>Approved BY Regisrtar</th> 
-                                            <th>Approved BY Vice Chancellor</th> 
-                                            <th>Thesis</th>
+                                            <th>Approved</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -117,10 +115,8 @@
                                             <th>Abstract</th>
                                             <th>synopsis</th>
                                             <th>Guide Name</th>
-                                            <th>Approved BY Deputy Regisrtar</th> 
-                                            <th>Approved BY Regisrtar</th> 
-                                            <th>Approved BY Vice Chancellor</th> 
-                                            <th>Thesis</th>
+                                            <th>Approved</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -137,11 +133,19 @@
                                             <td><?php echo $arr['abstract']; ?></td>
                                             <td><a href="../../<?php echo $arr['synopsis']; ?>">Click Here</a></td>
                                             <td><?php echo $arr['guide']; ?></td>
-                                            <td><?php if($arr['is_deputy']==0) echo "Pending"; else echo "Approved"; ?></td>
                                             <td><?php if($arr['is_registrar']==0) echo "Pending"; else echo "Approved"; ?></td>
-                                            <td><?php if($arr['is_chancellor']==0) echo "Pending"; else echo "Approved"; ?></td>
-                                            <td><?php if($arr['thesis']!=''){ ?> <a href="../../<?php echo $arr['thesis']; ?>">Click Here</a><?php } ?></td>
-                                            <!-- <a href="../../<?php echo $arr['thesis']; ?>">Click Here</a> -->
+                                            <td>
+                                                <ul class="list-inline m-0" style="float: right;margin: -4px;">
+                                                    <li class="list-inline-item ">
+                                                        <form action="server.php?id=<?php echo $arr['id'] ?>"
+                                                            method="post">
+                                                            <button name="approve" class="btn btn-success waves-effect" onclick="return confirm('Do you want to Approved?');">
+                                                                <i class="material-icons">done</i>
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </td>
                                         </tr>
                                         <?php 
                                         } 

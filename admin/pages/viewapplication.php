@@ -122,16 +122,17 @@
                                             include("config.php");
                                             $obj=new database;
                                             $row=$obj->viewapplicant();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
-                                                if($arr['is_profile']==1){
+                                                if($arr['is_profile']==1 and $arr['is_approved']==0 ){
                                         ?>
                                         <tr>
-                                            <td><?php echo $arr['id']; ?></td>
+                                            <td><?php echo $i; $i++; ?></td>
                                             <td><?php echo $arr['firstname']; ?></td>
                                             <td><?php echo $arr['lastname']; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
                                             <td><?php echo $arr['phone']; ?></td>
-                                            <td></td>
+                                            <td><?php if($arr['is_approved']==0) echo "Pending"; else echo "Approved"; ?></td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <li class="list-inline-item">
@@ -141,11 +142,13 @@
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item">
-                                                        <a class="btn btn-success btn-sm rounded-0 waves-effect edit"
-                                                            type="button" data-toggle="modal" data-target="#largeModal"
-                                                            title="Edit" id="<?php echo $arr['id']; ?>">
-                                                            <i class="material-icons">done</i>
-                                                        </a>
+                                                        <form action="server.php?id=<?php echo $arr['id'] ?>"
+                                                            method="post">
+                                                            <button name="approve" class="btn btn-success waves-effect"
+                                                                onclick="return confirm('Do you want to Approved?');">
+                                                                <i class="material-icons">done</i>
+                                                            </button>
+                                                        </form>
                                                     </li>
                                                     <li class="list-inline-item">
                                                         <button

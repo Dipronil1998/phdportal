@@ -98,7 +98,7 @@
                     <i class="material-icons">playlist_add_check</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL POSTS</div>
+                    <div class="text">TOTAL NEW APPLICATION</div>
                     <div class="number count-to" data-from="0" data-to="{{$posts->count()}}" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
@@ -110,7 +110,7 @@
                     <i class="material-icons">favorite</i>
                 </div>
                 <div class="content">
-                    <div class="text">FAVORITE POSTS</div>
+                    <div class="text">TOTAL STUDENTS</div>
                     <div class="number count-to" data-from="0" data-to="{{ Auth::user()->favorite_posts()->count() }}"
                         data-speed="1000" data-fresh-interval="20"></div>
                 </div>
@@ -122,7 +122,7 @@
                     <i class="material-icons">library_books</i>
                 </div>
                 <div class="content">
-                    <div class="text">PENDING POSTS</div>
+                    <div class="text">PENDING STUDENTS </div>
                     <div class="number count-to" data-from="0" data-to="{{$total_pending_posts}}" data-speed="1000"
                         data-fresh-interval="20"></div>
                 </div>
@@ -134,7 +134,7 @@
                     <i class="material-icons">visibility</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL VIEWS</div>
+                    <div class="text">TOTAL GUIDE</div>
                     <div class="number count-to" data-from="0" data-to="{{$all_views}}" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
@@ -149,7 +149,7 @@
                     <i class="material-icons">apps</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL CATEGORIES</div>
+                    <div class="text">TOTAL SYNPOSIS SUBMIT</div>
                     <div class="number count-to" data-from="0" data-to="{{$category_count}}" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
@@ -159,7 +159,7 @@
                     <i class="material-icons">labels</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL TAGS</div>
+                    <div class="text">TOTAL THESIS SUBMIT</div>
                     <div class="number count-to" data-from="0" data-to="{{$tag_count}}" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>
@@ -169,7 +169,7 @@
                     <i class="material-icons">account_circle</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL AUTHORS</div>
+                    <div class="text">TOTAL GUIDE WHO ARE NOT REGISTER</div>
                     <div class="number count-to" data-from="0" data-to="{{$author_count}}" data-speed="15"
                         data-fresh-interval="20"></div>
                 </div>

@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/viewasynopsis.php">
+                        <a href="../pages/viewsynopsis.php">
                             <i class="material-icons">text_fields</i>
                             <span>View Synopsis</span>
                         </a>

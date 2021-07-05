@@ -89,7 +89,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                All New Applicant
+                               Student
                             </h2>
                         </div>
                         <div class="body">
@@ -98,57 +98,51 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Email id</th>
-                                            <th>Title</th>
-                                            <th>Abstract</th>
-                                            <th>synopsis</th>
-                                            <th>Guide Name</th>
-                                            <th>Approved</th>
-                                            <th>Action</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>Email id</th>
-                                            <th>title</th>
-                                            <th>Abstract</th>
-                                            <th>synopsis</th>
-                                            <th>Guide Name</th>
-                                            <th>Approved</th>
-                                            <th>Action</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>View</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php 
                                             include("config.php");
                                             $obj=new database;
-                                            $row=$obj->viewsynopsis();
+                                            $row=$obj->viewapplicant();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
+                                                if($arr['is_approved']==1 ){
                                         ?>
                                         <tr>
-                                            <td><?php echo $arr['id']; ?></td>
+                                            <td><?php echo $i; $i++; ?></td>
+                                            <td><?php echo $arr['firstname']; ?></td>
+                                            <td><?php echo $arr['lastname']; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
-                                            <td><?php echo $arr['title']; ?></td>
-                                            <td><?php echo $arr['abstract']; ?></td>
-                                            <td><a href="../../<?php echo $arr['synopsis']; ?>">Click Here</a></td>
-                                            <td><?php echo $arr['guide']; ?></td>
-                                            <td><?php if($arr['is_registrar']==0) echo "Pending"; else echo "Approved"; ?></td>
+                                            <td><?php echo $arr['phone']; ?></td>
                                             <td>
                                                 <ul class="list-inline m-0" style="float: right;margin: -4px;">
                                                     <li class="list-inline-item">
-                                                        <form action="server.php?id=<?php echo $arr['id'] ?>">
-                                                        <button name="approve"
-                                                            class="btn btn-success waves-effect">
-                                                            <i class="material-icons">done</i>
-                                                        </button>
-                                                        </form>
+                                                        <a href="details.php?id=<?php echo $arr['id'] ?>"
+                                                            class="btn btn-primary waves-effect">
+                                                            <i class="material-icons">visibility</i>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </td>
                                         </tr>
                                         <?php 
-                                        } 
+                                        } }
                                         ?>
                                     </tbody>
                                 </table>

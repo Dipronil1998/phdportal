@@ -117,11 +117,12 @@
                                             include("config.php");
                                             $obj=new database;
                                             $row=$obj->guideselect();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
                                                 if($arr['own']==0){
                                         ?>
                                         <tr>
-                                                <td><?php echo $arr['id']; ?></td>
+                                                <td><?php echo $i; $i++; ?></td>
                                                 <td><?php echo $arr['name']; ?></td>
                                                 <td><?php echo $arr['title']; ?></td>
                                                 <td><?php echo $arr['about']; ?></td>

@@ -66,9 +66,9 @@
                             <button class="btn btn-block bg-pink waves-effect" name="signin" type="submit">SIGN IN</button>
                         </div>
                     </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6 align-right">
-                            <!-- <a href="forgot-password.html">Forgot Password?</a> -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a href="../../portal.php" class="btn btn-block bg-red waves-effect">Back</a>
                         </div>
                     </div>
                     
