@@ -129,7 +129,7 @@
                                                 if($arr['is_registrar']==0){
                                         ?>
                                         <tr>
-                                            <td><?php echo $i;$i++ ?></td>
+                                            <td><?php echo $i++; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
                                             <td><?php echo $arr['title']; ?></td>
                                             <td><?php echo $arr['abstract']; ?></td>

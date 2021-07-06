@@ -128,10 +128,11 @@
                                             include("config.php");
                                             $obj=new database;
                                             $row=$obj->viewsynopsis();
+                                            $i=1;
                                             while($arr=mysqli_fetch_array($row)){
                                         ?>
                                         <tr>
-                                            <td><?php echo $arr['id']; ?></td>
+                                            <td><?php echo $i++; ?></td>
                                             <td><?php echo $arr['email']; ?></td>
                                             <td><?php echo $arr['title']; ?></td>
                                             <td><?php echo $arr['abstract']; ?></td>

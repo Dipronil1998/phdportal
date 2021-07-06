@@ -10,6 +10,11 @@
     $newapplication=$obj->newapplication();
     $totalstudent=$obj->totalstudent();
     $pendingstudent=$obj->pendingstudent();
+    $totalguide=$obj->totalguide();
+    $newguide=$obj->newguide();
+    $totalsynopsis=$obj->totalsynopsis();
+    $totalthesis=$obj->totalthesis();
+    $pendingpayment=$obj->pendingpayment();
 ?>
 
 <!DOCTYPE html>
@@ -90,138 +95,154 @@
     </section>
 
     <section class="content">
-    <div class="container-fluid">
-    <div class="block-header">
-        <h2>DASHBOARD</h2>
-    </div>
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>DASHBOARD</h2>
+            </div>
 
-    <!-- Widgets -->
-    <div class="row clearfix">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-green hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">playlist_add_check</i>
+            <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">playlist_add_check</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL NEW APPLICATION</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="content">
-                    <div class="text">TOTAL NEW APPLICATION</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">favorite</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL STUDENTS</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $totalstudent; ?>"
+                                data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-cyan hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">favorite</i>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-red hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">library_books</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">PENDING STUDENTS </div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $pendingstudent; ?>"
+                                data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="content">
-                    <div class="text">TOTAL STUDENTS</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $totalstudent; ?>"
-                        data-speed="1000" data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-red hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">library_books</i>
-                </div>
-                <div class="content">
-                    <div class="text">PENDING STUDENTS </div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $pendingstudent; ?>" data-speed="1000"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-orange hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">visibility</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL GUIDE</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row clearfix">
-        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-            <div class="info-box bg-pink hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">apps</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL SYNPOSIS SUBMIT</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-blue hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">labels</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL THESIS SUBMIT</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-purple hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">account_circle</i>
-                </div>
-                <div class="content">
-                    <div class="text">TOTAL GUIDE WHO ARE NOT REGISTER</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-            <div class="info-box bg-deep-purple hover-zoom-effect">
-                <div class="icon">
-                    <i class="material-icons">fiber_new</i>
-                </div>
-                <div class="content">
-                    <div class="text">TODAY AUTHORS</div>
-                    <div class="number count-to" data-from="0" data-to="<?php echo $newapplication; ?>" data-speed="15"
-                        data-fresh-interval="20"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
-            <div class="card">
-                <div class="header">
-                    <h2>MOST POPULAR POST</h2>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-hover dashboard-task-infos">
-                            <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Views</th>
-                                    <th>Favorite</th>
-                                    <th>Comments</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                            </tbody>
-                        </table>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">visibility</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL GUIDE</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $totalguide; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Widgets -->
-        </div>
-    </div>
 
-</div>
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <div class="info-box bg-pink hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">apps</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL SYNPOSIS SUBMIT</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $totalsynopsis; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                    <div class="info-box bg-blue hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">labels</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL THESIS SUBMIT</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $totalthesis; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                    <div class="info-box bg-purple hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">account_circle</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TOTAL GUIDE WHO ARE NOT REGISTER</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $newguide; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                    <div class="info-box bg-deep-purple hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">fiber_new</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">PAYMENT PENDING</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $pendingpayment; ?>"
+                                data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                    <div class="card">
+                        <div class="header">
+                            <h2>VIEW </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Email id</th>
+                                            <th>Guide Name</th>
+                                            <th>Synopsis</th>
+                                            <th>Thesis</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $row=$obj->viewsynopsis();
+                                            $i=1;
+                                            while($arr=mysqli_fetch_array($row)){
+                                                if($arr['synopsis']!='' and $arr['thesis']!=''){
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i++; ?></td>
+                                            <td><?php echo $arr['email']; ?></td>
+                                            <td><?php echo $arr['guide']; ?></td>
+                                            <td><?php if($arr['synopsis']!=''){ ?> <a
+                                                    href="../../<?php echo $arr['synopsis']; ?>">Click Here</a><?php } ?>
+                                            </td>
+                                            <td><?php if($arr['thesis']!=''){ ?> <a
+                                                    href="../../<?php echo $arr['thesis']; ?>">Click Here</a><?php } ?>
+                                            </td>
+                                        </tr>
+                                        <?php 
+                                        } }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #END# Widgets -->
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <!-- Jquery Core Js -->

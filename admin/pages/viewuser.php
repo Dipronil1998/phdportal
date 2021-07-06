@@ -122,7 +122,7 @@
                                             $row=$obj->viewapplicant();
                                             $i=1;
                                             while($arr=mysqli_fetch_array($row)){
-                                                if($arr['is_approved']==1 ){
+                                                if($arr['is_payment']==1 ){
                                         ?>
                                         <tr>
                                             <td><?php echo $i; $i++; ?></td>

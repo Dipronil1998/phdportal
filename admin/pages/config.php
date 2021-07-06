@@ -16,9 +16,9 @@
 	class database extends config
 	{
 
-		public function signin($email,$pass)
+		public function signin($email,$pass,$role)
         {
-			$this->qry=mysqli_query($this->conn,"SELECT * FROM admin_login WHERE adminemail='$email' AND adminpassword='$pass'");
+			$this->qry=mysqli_query($this->conn,"SELECT * FROM admin_login WHERE adminemail='$email' AND adminpassword='$pass' AND role='$role'");
 			$no_rows = mysqli_num_rows($this->qry); 
 			if($no_rows==1)
 				return 1;
@@ -102,7 +102,43 @@
 
 		public function totalguide()
  		{
-            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_approved=0");
+            $result=mysqli_query($this->conn,"SELECT * FROM guide WHERE own=1");
+			$result=mysqli_num_rows($result);
+ 			return $result;
+ 		}
+
+		public function totalsynopsis()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM synopsis");
+			$row = mysqli_fetch_assoc($result);
+			if($row['synopsis']!=''){
+				$result=mysqli_num_rows($result);
+				return $result;
+			}
+			
+ 		} 
+
+		 public function totalthesis()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM synopsis");
+			$row = mysqli_fetch_assoc($result);
+			if($row['thesis']!=''){
+				$result=mysqli_num_rows($result);
+				return $result;
+			}
+			
+ 		} 
+
+		 public function newguide()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM guide WHERE own=1");
+			$result=mysqli_num_rows($result);
+ 			return $result;
+ 		}
+
+		public function pendingpayment()
+ 		{
+            $result=mysqli_query($this->conn,"SELECT * FROM user WHERE is_payment=0");
 			$result=mysqli_num_rows($result);
  			return $result;
  		}

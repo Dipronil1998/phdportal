@@ -8,7 +8,8 @@ if (isset($_POST['signin'])){
     $obj= new Database;
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $sign=$obj->signin($email,$password);
+    $role="registrar";
+    $sign=$obj->signin($email,$password,$role);
     if($sign==1)
     {
         $_SESSION['admin_mail']=$email;
