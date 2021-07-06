@@ -72,7 +72,7 @@ if (!isset($_SESSION['email'])) {
                     <option></option>
                     <?php
                         while($arr=mysqli_fetch_array($row)){
-                            if($arr['own']==1 and $arr['count']<7){
+                            if($arr['own']==1 and $arr['count']<6){
                     ?>
                         <option value="<?php echo $arr['name']; ?>"><?php echo $arr['name']; ?></option>
                     <?php } } ?>
@@ -81,11 +81,11 @@ if (!isset($_SESSION['email'])) {
             <?php  ?>
             <div class="info">
                 <label>Title</label>
-                <input type="email" name="text" value="<?php echo $arr['name']; ?>">
+                <input type="text" name="text" id="title" >
             </div>
             <div class="info">
                 <label>About Guide</label>
-                <textarea name="" rows="4" cols="50"></textarea>
+                <textarea name="" id="about" rows="4" cols="50"></textarea>
             </div>
             <?php  ?>
             <button class="btn btn-success" name="ourguide">Submit</button>
@@ -115,19 +115,23 @@ if (!isset($_SESSION['email'])) {
     </script>
     
     <script>
-    // $(document).ready(function(){
-    //     jQuery('#guide').change(function(){
-    //         var id=jQuery(this).val();
-    //         jQuery.ajax({
-    //             type:'post',
-    //             url:'getguide.php',
-    //             data:id,
-    //             success:function(result){
-    //                 alert(result);
-    //             }
-    //         })
-    //     })
-    // })
+    $(document).ready(function(){
+        $('#guide').change(function(){
+            var id=$(this).val();
+            // console.log(id);
+            $.ajax({
+                type:'post',
+                url:'getguide.php',
+                dataType: "json",
+                data:{id:id},
+                success:function(data){
+                    // console.log(data.title);
+                    $("#title").val(data.title);
+                    $("#about").html(data.about);
+                }
+            })
+        })
+    })
     </script>
 </body>
 

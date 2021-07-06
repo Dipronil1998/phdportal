@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2021 at 06:16 PM
+-- Generation Time: Jul 06, 2021 at 05:27 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -41,7 +41,10 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `name`, `adminemail`, `adminpassword`, `role`) VALUES
-(1, 'admin', 'publisherstop@gmail.com', 'admin', '');
+(1, 'admin', 'publisherstop@gmail.com', 'admin', 'admin'),
+(2, 'Deputy', 'deputy@gmail.com', 'admin', 'deputy'),
+(3, 'Registrar', 'registrar@gmail.com', 'admin', 'registrar'),
+(4, 'Chancellor', 'chancellor@gmail.com', 'admin', 'chancellor');
 
 -- --------------------------------------------------------
 
@@ -54,20 +57,21 @@ CREATE TABLE `guide` (
   `name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `about` varchar(255) NOT NULL,
-  `own` tinyint(4) NOT NULL DEFAULT '0'
+  `own` tinyint(4) NOT NULL DEFAULT '0',
+  `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `guide`
 --
 
-INSERT INTO `guide` (`id`, `name`, `title`, `about`, `own`) VALUES
-(1, 'Suman Das', 'Techno India Hooghly', 'CS', 1),
-(3, 'Subrata Saha', 'Techno India Hooghly', 'C,c++', 0),
-(4, 'Soumya Sen', 'TIH', 'all', 1),
-(5, 'subhendu sir', 'dad', '<p>afsg</p>', 1),
-(6, 'sssssssss', 'eeeeeee', 'eeeeeeeeeee', 0),
-(7, 'dip', 'dip', 'dip', 0);
+INSERT INTO `guide` (`id`, `name`, `title`, `about`, `own`, `count`) VALUES
+(1, 'Suman Das', 'Techno India Hooghly', 'CS', 1, 3),
+(3, 'Subrata Saha', 'Techno India Hooghly', 'C,c++', 0, 0),
+(4, 'Soumya Sen', 'TIH', 'all', 1, 0),
+(5, 'subhendu sir', 'dad', '<p>afsg</p>', 1, 0),
+(6, 'sssssssss', 'eeeeeee', 'eeeeeeeeeee', 0, 0),
+(7, 'dip', 'dip', 'dip', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -93,8 +97,7 @@ CREATE TABLE `synopsis` (
 --
 
 INSERT INTO `synopsis` (`id`, `email`, `title`, `abstract`, `synopsis`, `guide`, `is_deputy`, `is_registrar`, `is_chancellor`, `thesis`) VALUES
-(1, 'dipronildas.net@gmail.com', 'fa', 'sadd', 'uploaddocuments/synopsis/dipronildas.net@gmail.com_synopsis.pdf', 'sssssssss', 1, 1, 1, 'uploaddocuments/thesis/dipronildas.net@gmail.com_thesis.pdf'),
-(2, 'subhronildas.net@gmail.com', '4rgtre', 'fdshsd', 'uploaddocuments/synopsis/subhronildas.net@gmail.com_synopsis.pdf', 'dip', 0, 0, 0, '');
+(3, 'dipronildas.net@gmail.com', 'sssssssss', 'sssssssssssssss', 'uploaddocuments/synopsis/dipronildas.net@gmail.com_synopsis.pdf', 'subhendu sir', 1, 1, 1, 'uploaddocuments/thesis/dipronildas.net@gmail.com_thesis.pdf');
 
 -- --------------------------------------------------------
 
@@ -125,8 +128,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `middlename`, `lastname`, `email`, `phone`, `gender`, `dob`, `course`, `password`, `otp`, `is_profile`, `is_approved`, `is_payment`, `is_synopsis`) VALUES
-(2, 'subhronil', '', 'das', 'subhronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 1, 1, 1),
-(3, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-01', '', '1234', 0, 1, 1, 1, 1);
+(4, 'dipronil', '', 'das', 'dipronildas.net@gmail.com', '9804633142', 'male', '2021-06-28', '', '1234', 0, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -181,8 +183,7 @@ CREATE TABLE `userfull` (
 --
 
 INSERT INTO `userfull` (`id`, `user_id`, `title`, `alteremail`, `alterphone`, `fathername`, `address`, `city`, `pin`, `state`, `country`, `insti10`, `start10`, `end10`, `board10`, `per10`, `insti12`, `start12`, `end12`, `board12`, `per12`, `instigra`, `startgra`, `endgra`, `boardgra`, `pergra`, `instipo`, `startpo`, `endpo`, `boardpo`, `perpo`, `mark10`, `mark12`, `markgra`, `markpo`, `photo`, `sign`, `addressp`, `proforma`) VALUES
-(2, 2, 'Mr.', '', '', '', '', '', '712121', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', '2021-06-06', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, 'rr', '0000-00-00', '', '', 0, '', 'uploaddocuments/marksheet12/subhronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/subhronildas.n', 'uploaddocuments/marksheetpostgraduation/subhronild', 'uploaddocuments/photo/subhronildas.net@gmail.com_p', 'uploaddocuments/sign/subhronildas.net@gmail.com_si', 'uploaddocuments/addressproff/subhronildas.net@gmai', 'uploaddocuments/proforma/subhronildas.net@gmail.co'),
-(3, 3, 'Ms.', '', '', '', '', '', '', 'WB', 'India', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'uploaddocuments/marksheet10/dipronildas.net@gmail.com_marksheet10.pdf', 'uploaddocuments/marksheet12/dipronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/dipronildas.net@gmail.com_marksheetgraduation.pdf', 'uploaddocuments/marksheetpostgraduation/dipronildas.net@gmail.com_marksheetpostgraduation.pdf', 'uploaddocuments/photo/dipronildas.net@gmail.com_photo.jpg', 'uploaddocuments/sign/dipronildas.net@gmail.com_sign.jpg', 'uploaddocuments/addressproff/dipronildas.net@gmail.com_addressproof.pdf', 'uploaddocuments/proforma/dipronildas.net@gmail.com_proforma.pdf');
+(4, 4, '', '', '', '', '', '', '', '', 'India', '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '0000-00-00', '', 0, '', '0000-00-00', '', '', 0, 'uploaddocuments/marksheet10/dipronildas.net@gmail.com_marksheet10.pdf', 'uploaddocuments/marksheet12/dipronildas.net@gmail.com_marksheet12.pdf', 'uploaddocuments/marksheetgraduation/dipronildas.net@gmail.com_marksheetgraduation.pdf', 'uploaddocuments/marksheetpostgraduation/dipronildas.net@gmail.com_marksheetpostgraduation.pdf', 'uploaddocuments/photo/dipronildas.net@gmail.com_photo.jpg', 'uploaddocuments/sign/dipronildas.net@gmail.com_sign.jpg', 'uploaddocuments/addressproff/dipronildas.net@gmail.com_addressproof.pdf', 'uploaddocuments/proforma/dipronildas.net@gmail.com_proforma.pdf');
 
 --
 -- Indexes for dumped tables
@@ -229,7 +230,7 @@ ALTER TABLE `userfull`
 -- AUTO_INCREMENT for table `admin_login`
 --
 ALTER TABLE `admin_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `guide`
@@ -241,19 +242,19 @@ ALTER TABLE `guide`
 -- AUTO_INCREMENT for table `synopsis`
 --
 ALTER TABLE `synopsis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `userfull`
 --
 ALTER TABLE `userfull`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
