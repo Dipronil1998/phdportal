@@ -76,7 +76,7 @@ function smtp_mailer($to,$subject,$msg){
 
     $mail->Port = 587;  //Email Port
     $mail->Username = "publisherstop@gmail.com";// Email address of your server
-    $mail->Password = "PS@publisher";// Email password
+    $mail->Password = "";// Email password
 
     $mail->From = "publisherstop@gmail.com"; //email address
     // $mail->FromName = "your username email";
